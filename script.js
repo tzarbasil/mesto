@@ -1,8 +1,8 @@
 let popup = document.querySelector('.popup');
 let popupContent = document.querySelector('.popup__content');
 let editButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelector('.popup__close');
-let saveButton = document.querySelector('.popup__form_container_submit');
+let closeButton = document.querySelector('.popup__close-button');
+let saveButton = document.querySelector('.popup__form_submit');
 
 editButton.addEventListener('click', function () {
   popup.classList.add('active')
@@ -21,8 +21,8 @@ saveButton.addEventListener('click', function () {
 
 let formElement = document.querySelector('.popup__form');
 
-let nameInput = document.querySelector('.popup__form_name');
-let jobInput = document.querySelector('.popup__form_subtitle');
+let nameInput = document.querySelector('.popup__form_container_name');
+let jobInput = document.querySelector('.popup__form_container_subtitle');
 
 function handleFormSubmit(evt) {
   evt.preventDefault();

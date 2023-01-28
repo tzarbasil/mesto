@@ -6,4 +6,4 @@ Mesto.Russia v.1 - реализована возможность редакти�
 
 В дальнейшем планируется расширение функционала
 
-gh pages: https://tzarbasil.github.io/mesto-main/
+gh pages: https://tzarbasil.github.io/mesto

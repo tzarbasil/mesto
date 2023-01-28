@@ -1,4 +1,4 @@
-.popup__form_name {
+.popup__form_container_name {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   margin-bottom: 30px;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .popup__form_name {
+  .popup__form_container_name {
     padding-bottom: 9px;
     margin-bottom: 29px;
     margin-left: -2px;

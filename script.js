@@ -2,7 +2,7 @@ let popup = document.querySelector('.popup');
 let popupContent = document.querySelector('.popup__content');
 let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__close');
-let saveButton = document.querySelector('.popup__form_submit');
+let saveButton = document.querySelector('.popup__form_container_submit');
 
 editButton.addEventListener('click', function () {
   popup.classList.add('active')
@@ -28,13 +28,13 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
 
 
-  let name = evt.target.querySelector('.popup__form_name').value
+  let name = evt.target.querySelector('.popup__form_container_name').value
   console.log(name)
-  let subtitle = evt.target.querySelector('.popup__form_subtitle').value
+  let subtitle = evt.target.querySelector('.popup__form_container_subtitle').value
   console.log(name)
 
-  document.getElementsByClassName("popup__form_name")[0].value;
-  document.getElementsByClassName("popup__form_subtitle")[0].value;
+  document.getElementsByClassName("popup__form_container_name")[0].value;
+  document.getElementsByClassName("popup__form_container_subtitle")[0].value;
 
   let profileTitle = document.querySelector('.profile__title');
   let profileSubitle = document.querySelector('.profile__subtitle');

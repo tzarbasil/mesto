@@ -1,4 +1,4 @@
-.popup__form_container_subtitle {
+.popup__subtitle {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     font-weight: 400;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .popup__form_container_subtitle {
+    .popup__subtitle {
         padding-bottom: 9px;
         margin-left: -2px;
     }

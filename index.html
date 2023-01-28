@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="normalize.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="Mesto Russia">
+    </header>
+
+
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/avatar.png" alt="Ваш аватар">
+        <div class="profile__wrap">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__button"></button>
+      </section>
+
+      <section class="card">
+        <div class="card__container">
+          <img class="card__image" src="./images/Karachaevsk.png" alt="Карачаевск">
+          <div class="card__info">
+            <h2 class="card__title">Карачаевск</h2>
+            <button class="card__like"></button> 
+          </div>
+        </div>
+
+        <div class="card__container">
+          <img class="card__image" src="./images/Dombay.png" alt="Домбай">
+          <div class="card__info">
+            <h2 class="card__title">Домбай</h2>
+            <button class="card__like"></button> 
+          </div>
+        </div>
+
+        <div class="card__container">
+          <img class="card__image" src="./images/Elbrus.png" alt="Эльбрус">
+          <div class="card__info">
+            <h2 class="card__title">Эльбрус</h2>
+            <button class="card__like"></button> 
+          </div>
+        </div>
+
+        <div class="card__container">
+          <img class="card__image" src="./images/Kamchatka.png" alt="Камчатка">
+          <div class="card__info">
+            <h2 class="card__title">Камчатка</h2>
+            <button class="card__like"></button> 
+          </div>
+        </div>
+
+        <div class="card__container">
+          <img class="card__image" src="./images/Murmansk.png" alt="Мурманск">
+          <div class="card__info">
+            <h2 class="card__title">Мурманск</h2>
+            <button class="card__like"></button> 
+          </div>
+        </div>
+
+        <div class="card__container">
+          <img class="card__image" src="./images/Teriberka.png" alt="Териберка">
+          <div class="card__info">
+            <h2 class="card__title">Териберка</h2>
+            <button class="card__like"></button> 
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <footer class="footer">
+      <p class="footer__copyright">© 2022 Mesto Russia</p>
+    </footer>
+
+    <section class="popup">
+      <div class="popup__content">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form action="#" class="popup__form" name="popup__form">
+          <fieldset class="popup__form_container">
+            <input type="text" class="popup__form_name" value="Жак-Ив Кусто" maxlength="15">
+            <input type="text" class="popup__form_subtitle" value="Исследователь океана" maxlength="40">
+          </fieldset>
+          <button class="popup__form_submit" type='submit'>Сохранить</button>
+        </form>
+        <button class="popup__close-button"></button>
+      </div>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>

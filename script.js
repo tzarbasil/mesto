@@ -1,7 +1,7 @@
 let popup = document.querySelector('.popup');
 let popupContent = document.querySelector('.popup__content');
 let editButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelector('.popup__close-button');
+let closeButton = document.querySelector('.popup__close');
 let saveButton = document.querySelector('.popup__form_submit');
 
 editButton.addEventListener('click', function () {

@@ -21,60 +21,60 @@
         <img class="profile__avatar" src="./images/avatar.png" alt="Ваш аватар">
         <div class="profile__wrap">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button"></button>
+          <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__button"></button>
+        <button class="profile__button" type="button" aria-label="Добавить"></button>
       </section>
 
       <section class="card">
-        <div class="card__container">
+        <article class="card__container">
           <img class="card__image" src="./images/Karachaevsk.png" alt="Карачаевск">
           <div class="card__info">
             <h2 class="card__title">Карачаевск</h2>
             <button class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="card__container">
+        <article class="card__container">
           <img class="card__image" src="./images/Dombay.png" alt="Домбай">
           <div class="card__info">
             <h2 class="card__title">Домбай</h2>
             <button class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="card__container">
+        <article class="card__container">
           <img class="card__image" src="./images/Elbrus.png" alt="Эльбрус">
           <div class="card__info">
             <h2 class="card__title">Эльбрус</h2>
             <button class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="card__container">
+        <article class="card__container">
           <img class="card__image" src="./images/Kamchatka.png" alt="Камчатка">
           <div class="card__info">
             <h2 class="card__title">Камчатка</h2>
             <button class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="card__container">
+        <article class="card__container">
           <img class="card__image" src="./images/Murmansk.png" alt="Мурманск">
           <div class="card__info">
             <h2 class="card__title">Мурманск</h2>
             <button class="card__like"></button>
           </div>
-        </div>
+        </article>
 
-        <div class="card__container">
+        <article class="card__container">
           <img class="card__image" src="./images/Teriberka.png" alt="Териберка">
           <div class="card__info">
             <h2 class="card__title">Териберка</h2>
             <button class="card__like"></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
 
@@ -83,22 +83,21 @@
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
-      <div class="popup__content">
+    <div class="popup">
+      <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form action="#" class="popup__form" name="popup__form">
-          <fieldset class="popup__container">
-            <input type="text" class="popup__name" value="Жак-Ив Кусто" maxlength="15">
-            <input type="text" class="popup__subtitle" value="Исследователь океана" maxlength="40">
+          <fieldset class="popup__field">
+            <input type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто" placeholder="Ваше имя">
+            <input type="text" class="popup__input popup__input_type_subtitle" value="Исследователь океана" placeholder="Подпись">
           </fieldset>
           <button class="popup__submit" type='submit'>Сохранить</button>
         </form>
-        <button class="popup__close-button"></button>
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>
-    </section>
   </div>
 
-  <script src="./script.js"></script>
+  <script src="./index.js"></script>
 </body>
 
 </html>

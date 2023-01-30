@@ -11,7 +11,8 @@ editButton.addEventListener('click', function () {
 
 closeButton.addEventListener('click', function () {
   popup.classList.remove('popup_opened');
-  
+  document.getElementsByClassName("profile__title")[0].textContent;
+  document.getElementsByClassName("profile__subtitle")[0].textContent;
 });
 
 let formElement = document.querySelector('.popup__form');

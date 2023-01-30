@@ -27,12 +27,12 @@
         <button class="profile__button" type="button" aria-label="Добавить"></button>
       </section>
 
-      <section class="card">
+      <section class="card" aria-label="Карточки">
         <article class="card__container">
           <img class="card__image" src="./images/Karachaevsk.png" alt="Карачаевск">
           <div class="card__info">
             <h2 class="card__title">Карачаевск</h2>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </article>
 
@@ -40,7 +40,7 @@
           <img class="card__image" src="./images/Dombay.png" alt="Домбай">
           <div class="card__info">
             <h2 class="card__title">Домбай</h2>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </article>
 
@@ -48,7 +48,7 @@
           <img class="card__image" src="./images/Elbrus.png" alt="Эльбрус">
           <div class="card__info">
             <h2 class="card__title">Эльбрус</h2>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </article>
 
@@ -56,7 +56,7 @@
           <img class="card__image" src="./images/Kamchatka.png" alt="Камчатка">
           <div class="card__info">
             <h2 class="card__title">Камчатка</h2>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </article>
 
@@ -64,7 +64,7 @@
           <img class="card__image" src="./images/Murmansk.png" alt="Мурманск">
           <div class="card__info">
             <h2 class="card__title">Мурманск</h2>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </article>
 
@@ -72,7 +72,7 @@
           <img class="card__image" src="./images/Teriberka.png" alt="Териберка">
           <div class="card__info">
             <h2 class="card__title">Териберка</h2>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </article>
       </section>
@@ -88,8 +88,8 @@
         <h3 class="popup__title">Редактировать профиль</h3>
         <form action="#" class="popup__form" name="popup__form">
           <fieldset class="popup__field">
-            <input type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто" placeholder="Ваше имя">
-            <input type="text" class="popup__input popup__input_type_subtitle" value="Исследователь океана" placeholder="Подпись">
+            <input name="name__input" type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто" placeholder="Ваше имя">
+            <input name="subtitle__input" type="text" class="popup__input popup__input_type_subtitle" value="Исследователь океана" placeholder="Подпись">
           </fieldset>
           <button class="popup__submit" type='submit'>Сохранить</button>
         </form>

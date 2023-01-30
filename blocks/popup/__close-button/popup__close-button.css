@@ -9,6 +9,7 @@
     background-color: unset;
     background-repeat: no-repeat;
     cursor: pointer;
+    padding: 0;
 }
 
 .popup__close-button:hover {

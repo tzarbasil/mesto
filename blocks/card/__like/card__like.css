@@ -3,6 +3,7 @@
     border: none;
     width: 22px;
     height: 19px;
+    background-color: white;
 }
 
 .card__like:hover {

@@ -1,9 +1,9 @@
 .popup__form {
-  padding: 34px 36px 36px;
+  padding: 47px 34px 35px;
 }
 
 @media screen and (max-width: 768px) {
   .popup__form {
-    padding: 74px 22px 33px;
+    padding: 75px 20px 27px;
   }
 }

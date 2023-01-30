@@ -5,14 +5,12 @@ let saveButton = document.querySelector('.popup__submit');
 
 editButton.addEventListener('click', function () {
   popup.classList.add('popup_opened')
-  document.getElementsByClassName("profile__title")[0].textContent;
-  document.getElementsByClassName("profile__subtitle")[0].textContent;
+  nameInput.value = document.querySelector('.profile__title').textContent;
+  jobInput.value = document.querySelector('.profile__subtitle').textContent;
 });
 
 closeButton.addEventListener('click', function () {
   popup.classList.remove('popup_opened');
-  document.getElementsByClassName("profile__title")[0].textContent;
-  document.getElementsByClassName("profile__subtitle")[0].textContent;
 });
 
 let formElement = document.querySelector('.popup__form');

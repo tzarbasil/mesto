@@ -118,8 +118,8 @@ function getFormValue(event) {
 
   event.preventDefault();
 
-  const placeName = placeForm.querySelector('.card__namet');
-  const placeLink = placeForm.querySelector('.card__link');
+  const placeName = placeForm.querySelector('.card_name');
+  const placeLink = placeForm.querySelector('.card_link');
 
   const values = {
     placeName: placeName.value,

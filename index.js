@@ -1,8 +1,8 @@
-const popup = document.querySelector('.popup__edit');
+const popup = document.querySelector('.popup_edit');
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelectorAll('.popup__close-button');
 const addButton = document.querySelector('.profile__button');
-const popupPlace = document.querySelector('.popup__place');
+const popupPlace = document.querySelector('.popup_place');
 
 editButton.addEventListener('click', function () {
   popup.classList.add('popup_opened')
@@ -80,7 +80,7 @@ function createCard(cardText, src) {
     }
   })
 
-const cardImagePopup = document.querySelector('.popup__card');
+const cardImagePopup = document.querySelector('.popup_card');
 const popupImage = document.querySelector('.popup__card_image');
 const cardSubtitle = document.querySelector('.popup__card_subtitle');
 
@@ -111,7 +111,7 @@ addButton.addEventListener('click', function () {
 
 
 
-const placeForm = document.querySelector('.popup__place_form');
+const placeForm = document.querySelector('.popup_place_form');
 
 function getFormValue(event) {
   popupPlace.classList.remove('popup_opened');

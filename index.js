@@ -80,9 +80,9 @@ function createCard(cardText, src) {
     }
   })
 
-const cardImagePopup = document.querySelector('.popup__card-image');
-const popupImage = document.querySelector('.popup__image');
-const cardSubtitle = document.querySelector('.popup__card-image_subtitle');
+const cardImagePopup = document.querySelector('.popup__card');
+const popupImage = document.querySelector('.popup__card_image');
+const cardSubtitle = document.querySelector('.popup__card_subtitle');
 
 cardImg.addEventListener('click', function() {
   cardImagePopup.classList.add('popup_opened')

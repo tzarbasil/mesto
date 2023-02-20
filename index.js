@@ -111,15 +111,15 @@ addButton.addEventListener('click', function () {
 
 
 
-const placeForm = document.querySelector('.popup_place-form');
+const placeForm = document.querySelector('.popup__form_place');
 
 function getFormValue(event) {
   popupPlace.classList.remove('popup_opened');
 
   event.preventDefault();
 
-  const placeName = placeForm.querySelector('.card_name-input');
-  const placeLink = placeForm.querySelector('.card_link-input');
+  const placeName = placeForm.querySelector('.card__namet');
+  const placeLink = placeForm.querySelector('.card__link');
 
   const values = {
     placeName: placeName.value,

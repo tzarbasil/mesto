@@ -119,7 +119,7 @@ function getFormValue(event) {
   event.preventDefault();
 
   const placeName = placeForm.querySelector('.popup-card-name');
-  const placeLink = placeForm.querySelector('.popup-card-subtitle');
+  const placeLink = placeForm.querySelector('.popup-card-secondname');
 
   const values = {
     placeName: placeName.value,

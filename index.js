@@ -64,7 +64,7 @@ function createCard(cardText, src) {
   cardLikeButton.classList.add('card__like');
 
 
-  
+
   card.append(cardContainer);
   cardContainer.append(cardDeleteButton, cardImg, cardInfo);
   cardInfo.append(cardTitle, cardLikeButton);
@@ -80,15 +80,15 @@ function createCard(cardText, src) {
     }
   })
 
-let cardImagePopup = document.querySelector('.popup_card');
-let popupImage = document.querySelector('.popup__card-image');
-let cardSubtitle = document.querySelector('.popup__card-subtitle');
+  let cardImagePopup = document.querySelector('.popup_card');
+  let popupImage = document.querySelector('.popup__card-image');
+  let cardSubtitle = document.querySelector('.popup__card-subtitle');
 
-cardImg.addEventListener('click', function() {
-  cardImagePopup.classList.add('popup_opened')
-  popupImage.setAttribute('src', src); 
-  cardSubtitle.textContent = cardText;
-});
+  cardImg.addEventListener('click', function () {
+    cardImagePopup.classList.add('popup_opened')
+    popupImage.setAttribute('src', src);
+    cardSubtitle.textContent = cardText;
+  });
 }
 
 
@@ -111,15 +111,15 @@ addButton.addEventListener('click', function () {
 
 
 
-const placeForm = document.querySelector('.popup_place_form');
+const placeForm = document.querySelector('.popup_place-form');
 
 function getFormValue(event) {
   popupPlace.classList.remove('popup_opened');
 
   event.preventDefault();
 
-  const placeName = placeForm.querySelector('.card_name_input');
-  const placeLink = placeForm.querySelector('.card_link_input');
+  const placeName = placeForm.querySelector('.card_name-input');
+  const placeLink = placeForm.querySelector('.card_link-input');
 
   const values = {
     placeName: placeName.value,

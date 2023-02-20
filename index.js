@@ -1,7 +1,7 @@
 const popup = document.querySelector('.popup__edit');
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelectorAll('.popup__close-button');
-const addButton = document.querySelector('.profile__button')
+const addButton = document.querySelector('.profile__button');
 const popupPlace = document.querySelector('.popup__place');
 
 editButton.addEventListener('click', function () {
@@ -12,7 +12,7 @@ editButton.addEventListener('click', function () {
 
 closeButton.forEach(function (cb) {
   cb.addEventListener('click', function () {
-    const openedPopup = document.querySelector('.popup_opened')
+    const openedPopup = document.querySelector('.popup_opened');
     openedPopup.classList.remove('popup_opened');
   });
 })
@@ -53,13 +53,13 @@ function createCard(cardText, src) {
   cardContainer.classList.add('card__container');
   let cardDeleteButton = document.createElement('button');
   cardDeleteButton.classList.add('card__delete');
-  cardDeleteButton.addEventListener('click', deleteCard)
+  cardDeleteButton.addEventListener('click', deleteCard);
   let cardImg = document.createElement('img');
   cardImg.classList.add('card__image');
   let cardInfo = document.createElement('div');
-  cardInfo.classList.add('card__info')
+  cardInfo.classList.add('card__info');
   let cardTitle = document.createElement('h2');
-  cardTitle.classList.add('card__title')
+  cardTitle.classList.add('card__title');
   let cardLikeButton = document.createElement('button');
   cardLikeButton.classList.add('card__like');
 
@@ -74,15 +74,15 @@ function createCard(cardText, src) {
 
   cardLikeButton.addEventListener('click', function () {
     if (cardLikeButton.classList.contains('card__like_active')) {
-      cardLikeButton.classList.remove('card__like_active')
+      cardLikeButton.classList.remove('card__like_active');
     } else {
-      cardLikeButton.classList.add('card__like_active')
+      cardLikeButton.classList.add('card__like_active');
     }
   })
 
-const cardImagePopup = document.querySelector('.popup__card-image')
-const popupImage = document.querySelector('.popup__image')
-const cardSubtitle = document.querySelector('.popup__card-image_subtitle')
+const cardImagePopup = document.querySelector('.popup__card-image');
+const popupImage = document.querySelector('.popup__image');
+const cardSubtitle = document.querySelector('.popup__card-image_subtitle');
 
 cardImg.addEventListener('click', function() {
   cardImagePopup.classList.add('popup_opened')
@@ -102,7 +102,7 @@ let cards = [
 ]
 
 cards.forEach(function (card) {
-  createCard(card.cardText, card.src)
+  createCard(card.cardText, card.src);
 })
 
 addButton.addEventListener('click', function () {
@@ -111,7 +111,7 @@ addButton.addEventListener('click', function () {
 
 
 
-const placeForm = document.querySelector('.popup__place_form')
+const placeForm = document.querySelector('.popup__place_form');
 
 function getFormValue(event) {
   popupPlace.classList.remove('popup_opened');
@@ -132,18 +132,18 @@ function getFormValue(event) {
 
 placeForm.addEventListener('submit', getFormValue);
 
-const cardContainer = document.querySelectorAll('.card__container')
+const cardContainer = document.querySelectorAll('.card__container');
 const cardDeleteButton = document.querySelectorAll('.card__delete');
 
 
 function deleteCard(event) {
   const card = document.querySelector('section.card');
-  card.removeChild(event.target.parentNode)
-  console.log(event.target.parentNode)
+  card.removeChild(event.target.parentNode);
+  console.log(event.target.parentNode);
 }
 
 cardDeleteButton.forEach(button => {
-  button.addEventListener('click', deleteCard)
+  button.addEventListener('click', deleteCard);
 })
 
 

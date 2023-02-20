@@ -1,14 +1,12 @@
-.popup__container {
-    width: 430px;
-    background: #fff;
+.popup__card-image_container {
     border-radius: 10px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     position: relative;
 }
 
 @media screen and (max-width: 768px) {
-    .popup__container {
-        width: 282px;
+    .popup__card-image_container {
+        width: 300px;
         top: -160px
     }
 }

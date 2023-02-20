@@ -1,0 +1,15 @@
+.popup__image {
+    max-width: 800px;
+}
+
+@media screen and (max-width: 1024px) {
+    .popup__image {
+        max-width: 650px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .popup__image {
+        max-width: 300px;
+    }
+}

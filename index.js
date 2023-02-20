@@ -80,9 +80,9 @@ function createCard(cardText, src) {
     }
   })
 
-const cardImagePopup = document.querySelector('.popup_card');
-const popupImage = document.querySelector('.popup__card_image');
-const cardSubtitle = document.querySelector('.popup__card_subtitle');
+let cardImagePopup = document.querySelector('.popup_card');
+let popupImage = document.querySelector('.popup__card-image');
+let cardSubtitle = document.querySelector('.popup__card-subtitle');
 
 cardImg.addEventListener('click', function() {
   cardImagePopup.classList.add('popup_opened')
@@ -118,8 +118,8 @@ function getFormValue(event) {
 
   event.preventDefault();
 
-  const placeName = placeForm.querySelector('.card__name_input');
-  const placeLink = placeForm.querySelector('.card__link_input');
+  const placeName = placeForm.querySelector('.card_name_input');
+  const placeLink = placeForm.querySelector('.card_link_input');
 
   const values = {
     placeName: placeName.value,

@@ -1,6 +1,6 @@
 //Попапы
 const popup = document.querySelector('.popup');
-const popupPlace = document.querySelector('.popup_type_place_edit');
+const popupPlace = document.querySelector('.popup_type_place-edit');
 const popupImage = document.querySelector('.popup__card-image');
 const cardImagePopup = document.querySelector('.popup_type_card');
 //Кнопки

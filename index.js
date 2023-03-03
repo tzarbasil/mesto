@@ -1,12 +1,12 @@
 //Попапы
-const popup = document.querySelector('.popup');
+const popupProfile = document.querySelector('.popup_type_profile-edit');
 const popupPlace = document.querySelector('.popup_type_place-edit');
 const popupImage = document.querySelector('.popup__card-image');
 const cardImagePopup = document.querySelector('.popup_type_card');
 //Кнопки
-const editButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelectorAll('.popup__close-button');
-const addButton = document.querySelector('.profile__button');
+const buttonEditProfile = document.querySelector('.profile__edit-button');
+const buttonClosePopup = document.querySelectorAll('.popup__close-button');
+const buttonAddPopup = document.querySelector('.profile__button');
 
 const cardSubtitle = document.querySelector('.popup__card-subtitle');
 
@@ -14,25 +14,26 @@ const formElement = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_subtitle');
 
+const profileTitle = document.querySelector('.profile__title');
+const profileSubitle = document.querySelector('.profile__subtitle');
+
 function openPopup(popup) { popup.classList.add('popup_opened') }
 function closePopup(popup) { popup.classList.remove('popup_opened') }
 
 
-editButton.addEventListener('click', function () {
-  openPopup(popup)
+buttonEditProfile.addEventListener('click', function () {
+  openPopup(popupProfile)
   nameInput.value = document.querySelector('.profile__title').textContent;
   jobInput.value = document.querySelector('.profile__subtitle').textContent;
 });
 
-closeButton.forEach(function (closeButton) {
-  closeButton.addEventListener('click', function () {
-    closePopup(popup);
-    closePopup(popupPlace);
-    closePopup(cardImagePopup);
+buttonClosePopup.forEach(function (buttonClosePopup) {
+  buttonClosePopup  .addEventListener('click', function (event) {
+    closePopup(event.target.closest('.popup'));
   });
 })
 
-addButton.addEventListener('click', function () {
+buttonAddPopup.addEventListener('click', function () {
   openPopup(popupPlace);
 });
 
@@ -46,9 +47,6 @@ function handleFormSubmit(evt) {
   const name = evt.target.querySelector('.popup__input_type_name').value
   const subtitle = evt.target.querySelector('.popup__input_type_subtitle').value
   
-  const profileTitle = document.querySelector('.profile__title');
-  const profileSubitle = document.querySelector('.profile__subtitle');
-
   profileTitle.textContent = name;
   profileSubitle.textContent = subtitle;
 }

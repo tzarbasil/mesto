@@ -1,5 +1,6 @@
 .popup__card-image {
     max-width: 800px;
+    max-height: 450px;
 }
 
 @media screen and (max-width: 1024px) {

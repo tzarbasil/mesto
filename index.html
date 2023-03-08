@@ -29,14 +29,14 @@
 
       <section class="card" aria-label="Карточки">
         <template id="card__template">
-        <article class="card__container"> 
-          <button class="card__delete" type="button"></button> 
-          <img class="card__image"> 
-          <div class="card__info"> 
-            <h2 class="card__title"></h2> 
-            <button class="card__like" type="button"></button> 
-          </div> 
-        </article> 
+          <article class="card__container">
+            <button class="card__delete" type="button"></button>
+            <img class="card__image">
+            <div class="card__info">
+              <h2 class="card__title"></h2>
+              <button class="card__like" type="button"></button>
+            </div>
+          </article>
         </template>
       </section>
     </main>
@@ -46,45 +46,65 @@
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
 
+    <!--Попап редактирования профиля-->
     <div class="popup popup_type_profile-edit">
       <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form action="#" class="popup__form" name="popup__form">
-          <fieldset class="popup__field">
-            <input name="name__input" type="text" class="popup__input popup__input_type_name" value="Жак-Ив Кусто"
-              placeholder="Ваше имя">
-            <input name="subtitle__input" type="text" class="popup__input popup__input_type_subtitle"
-              value="Исследователь океана" placeholder="Подпись">
-          </fieldset>
+          <div class="popup__field">
+
+            <label for="" class="popup__field_label">
+              <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя"
+                minlength="2" maxlength="40" required>
+              <span class="form__input-error">Вы пропустили это поле.</span>
+            </label>
+
+            <label for="" class="popup__field_label">
+              <input class="popup__input popup__input_type_subtitle" type="text" value="Исследователь океана"
+                placeholder="Подпись" minlength="2" maxlength="200" required>
+              <span class="form__input-error">Вы пропустили это поле.</span>
+            </label>
+          </div>
           <button class="popup__submit" type='submit'>Сохранить</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>
     </div>
 
+
+    <!--Попап редактирования места-->
     <div class="popup popup_type_place-edit">
       <div class="popup__container">
         <h3 class="popup__title">Новое место</h3>
         <form action="#" class="popup__form popup__form_place" name="popup__form">
-          <fieldset class="popup__field">
-            <input name="name__input" type="text" class="popup__input popup-card-name" value="" placeholder="Название">
-            <input name="subtitle__input" type="text" class="popup__input popup-card-secondname" value="" placeholder="Ссылка на картинку">
-          </fieldset>
+          <div class="popup__field">
+            <label for="" class="popup__field_label">
+              <input id="place-name-input" type="text" class="popup__input popup-card-name" value=""
+                placeholder="Название" minlength="2" maxlength="30" required>
+              <span class="form__input-error">Вы пропустили это поле.</span>
+            </label>
+            <label for="" class="popup__field_label">
+              <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value=""
+                placeholder="Ссылка на картинку" required>
+              <span class="form__input-error">Вы пропустили это поле.</span>
+            </label>
+          </div>
           <button class="popup__submit" type='submit'>Создать</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>
     </div>
 
-    <div class="popup popup_type_card">
+    <!--Попап картинки места-->
+    <div class="popup popup_type_card ">
       <div class="popup__card-container">
         <img class="popup__card-image">
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__card-subtitle"></h3>
       </div>
     </div>
-
   </div>
+  <script src="./validate.js"></script>
   <script src="./index.js"></script>
 </body>
 

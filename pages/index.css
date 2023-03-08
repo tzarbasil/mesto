@@ -39,6 +39,9 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__form/__input/form__input-error.css);
+@import url(../blocks/popup/__form/__input/form__input-error_active.css);
+@import url(../blocks/popup/__field/_label/popup__field_label.css);
 
 @import url(../blocks/popup/__card/popup__card.css);
 @import url(../blocks/popup/__card-container/popup__card-container.css);

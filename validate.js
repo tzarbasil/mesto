@@ -1,13 +1,13 @@
-const hiddenError = (errorElement, errorElementLine, inputErrorClass, inputPopupClass) => {
+const hiddenError = (errorElement, inputSelector, inputErrorClass, inputPopupClass) => {
     errorElement.innerText = '';
     errorElement.classList.remove(inputErrorClass)
-    errorElementLine.classList.remove(inputPopupClass)
+    inputSelector.classList.remove(inputPopupClass)
 }
 
-const showError = (errorElement, errorElementLine, message, inputErrorClass, inputPopupClass) => {
+const showError = (errorElement, inputSelector, message, inputErrorClass, inputPopupClass) => {
     errorElement.innerText = message;
     errorElement.classList.add(inputErrorClass)
-    errorElementLine.classList.add(inputPopupClass)
+    inputSelector.classList.add(inputPopupClass)
 }
 
 const toggleInputState = (inputElement, options) => {
@@ -15,12 +15,12 @@ const toggleInputState = (inputElement, options) => {
 
     const inputSectionElement = inputElement.closest(options.inputSectionSelector);
     const errorElement = inputSectionElement.querySelector(options.inputErrorSelector)
-    const errorElementLine = inputSectionElement.querySelector(options.inputErrorLineSelector)
+    const inputSelector = inputSectionElement.querySelector(options.inputSelector)
 
     if (isValid) {
-        hiddenError(errorElement, errorElementLine, options.inputErrorClass, options.inputPopupClass)
+        hiddenError(errorElement, inputSelector, options.inputErrorClass, options.inputPopupClass)
     } else {
-        showError(errorElement, errorElementLine, inputElement.validationMessage, options.inputErrorClass, options.inputPopupClass)
+        showError(errorElement, inputSelector, inputElement.validationMessage, options.inputErrorClass, options.inputPopupClass)
     }
 }
 

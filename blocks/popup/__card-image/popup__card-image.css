@@ -1,6 +1,7 @@
 .popup__card-image {
-    max-width: 800px;
-    max-height: 450px;
+    max-width: 75vw;
+    max-height: 75vh;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (max-width: 1024px) {

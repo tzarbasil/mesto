@@ -53,17 +53,17 @@
         <form action="#" class="popup__form" name="popup__form">
           <div class="popup__field">
 
-            <label for="" class="popup__field-label">
-              <input class="popup__input popup__input_type_name" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя"
+            <div class="popup__field-text">
+              <input class="popup__input popup__input_type_name" type="text" value="" placeholder="Ваше имя"
                 minlength="2" maxlength="40" required>
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
-            </label>
+            </div>
 
-            <label for="" class="popup__field-label">
-              <input class="popup__input popup__input_type_subtitle" type="text" value="Исследователь океана"
+            <div class="popup__field-text">
+              <input class="popup__input popup__input_type_subtitle" type="text" value=""
                 placeholder="Подпись" minlength="2" maxlength="200" required>
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
-            </label>
+            </div>
           </div>
           <button class="popup__submit" type='submit'>Сохранить</button>
         </form>
@@ -78,16 +78,16 @@
         <h3 class="popup__title">Новое место</h3>
         <form action="#" class="popup__form popup__form_place" name="popup__form">
           <div class="popup__field">
-            <label for="" class="popup__field-label">
+            <div class="popup__field-text">
               <input id="place-name-input" type="text" class="popup__input popup-card-name" value=""
                 placeholder="Название" minlength="2" maxlength="30" required>
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
-            </label>
-            <label for="" class="popup__field-label">
+            </div>
+            <div class="popup__field-text">
               <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value=""
                 placeholder="Ссылка на картинку" required>
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
-            </label>
+            </div>
           </div>
           <button class="popup__submit" type='submit'>Создать</button>
         </form>
@@ -96,7 +96,7 @@
     </div>
 
     <!--Попап картинки места-->
-    <div class="popup popup_type_card ">
+    <div class="popup popup_type_card">
       <div class="popup__card-container">
         <img class="popup__card-image">
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>

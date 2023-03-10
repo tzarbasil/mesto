@@ -104,15 +104,17 @@ function createCard(cardText, src, alt) {
   const cardImg = cardContainer.querySelector('.card__image')
   const cardTitle = cardContainer.querySelector('.card__title')
   const cardLikeButton = cardContainer.querySelector('.card__like')
-  const cardDeleteButton = cardContainer.querySelectorAll('.card__delete');
+  const cardDeleteButton = cardContainer.querySelector('.card__delete');
 
   cardImg.setAttribute('src', src);
   cardImg.setAttribute('alt', alt)
   cardTitle.textContent = cardText;
 
-  cardDeleteButton.forEach(button => {
-    button.addEventListener('click', deleteCard);
-  })
+  cardDeleteButton.addEventListener('click', function () {
+    const deleteCard = cardDeleteButton.closest('article')
+    deleteCard.remove()
+  });
+
 
   cardLikeButton.addEventListener('click', function () {
     cardLikeButton.classList.toggle('card__like_active')
@@ -126,10 +128,6 @@ function createCard(cardText, src, alt) {
   });
 
 
-  function deleteCard(event) {
-    const card = document.querySelector('section.card');
-    card.removeChild(event.target.closest('article'));
-  }
 
 
   return cardContainer;
@@ -139,32 +137,32 @@ function renderCard(card) {
   cardsBlock.prepend(createCard(card.cardText, card.src, card.alt));
 }
 
-const cardsDefault = [
-  { cardText: 'Карачаевск', src: './images/Karachaevsk.png', alt: 'Карачаевск' },
-  { cardText: 'Домбай', src: './images/Dombay.png', alt: 'Домбай' },
-  { cardText: 'Эльбрус', src: './images/Elbrus.png', alt: 'Эльбрус' },
-  { cardText: 'Камчатка', src: './images/Kamchatka.png', alt: 'Камчатка' },
-  { cardText: 'Мурманск', src: './images/Murmansk.png', alt: 'Мурманск' },
-  { cardText: 'Териберка', src: './images/Teriberka.png', alt: 'Териберка' },
-]
+
+const card1 = { cardText: 'Карачаевск', src: './images/Karachaevsk.png', alt: 'Карачаевск' }
+const card2 = { cardText: 'Домбай', src: './images/Dombay.png', alt: 'Домбай' }
+const card3 = { cardText: 'Эльбрус', src: './images/Elbrus.png', alt: 'Эльбрус' }
+const card4 = { cardText: 'Камчатка', src: './images/Kamchatka.png', alt: 'Камчатка' }
+const card5 = { cardText: 'Мурманск', src: './images/Murmansk.png', alt: 'Мурманск' }
+const card6 = { cardText: 'Териберка', src: './images/Teriberka.png', alt: 'Териберка' }
+
+const cardsDefault = [card1, card2, card3, card4, card5, card6]
+
 cardsDefault.forEach(function (element) {
   renderCard(element)
 })
 
 const placeForm = document.querySelector('.popup__form_place');
 const src = placeForm.querySelector('.popup-card-secondname');
-const alt = placeForm.querySelector('.popup-card-secondname')
+const cardText = placeForm.querySelector('.popup-card-name');
+
 
 function getFormValue(event) {
   closePopup(popupPlace);
   event.preventDefault();
 
-  const cardText = placeForm.querySelector('.popup-card-name');
-
   const values = {
     cardText: cardText.value,
     src: src.value,
-    alt: alt.value
   }
   createCard(renderCard(values));
 }

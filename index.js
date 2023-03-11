@@ -85,10 +85,10 @@ enableValidation(options)
 function handleFormSubmit(evt) {
   closePopup(popupProfile);
 
-  const name = nameInput.value
+  const profileName = nameInput.value
   const subtitle = jobInput.value
 
-  profileTitle.textContent = name;
+  profileTitle.textContent = profileName;
   profileSubitle.textContent = subtitle;
   evt.preventDefault();
 }
@@ -98,7 +98,7 @@ formElements.forEach(function (formElements) {
   formElements.addEventListener('submit', handleFormSubmit);
 })
 
-function createCard(cardText, src, alt) {
+function createCard(name, link, alt) {
 
   const cardContainer = cardTemplate.querySelector('.card__container').cloneNode(true);
   const cardImg = cardContainer.querySelector('.card__image')
@@ -106,9 +106,9 @@ function createCard(cardText, src, alt) {
   const cardLikeButton = cardContainer.querySelector('.card__like')
   const cardDeleteButton = cardContainer.querySelector('.card__delete');
 
-  cardImg.setAttribute('src', src);
+  cardImg.setAttribute('src', link);
   cardImg.setAttribute('alt', alt)
-  cardTitle.textContent = cardText;
+  cardTitle.textContent = name;
 
   cardDeleteButton.addEventListener('click', function () {
     const deleteCard = cardDeleteButton.closest('article')
@@ -122,9 +122,9 @@ function createCard(cardText, src, alt) {
 
   cardImg.addEventListener('click', function () {
     openPopup(cardImagePopup)
-    popupImage.setAttribute('src', src);
+    popupImage.setAttribute('src', link);
     popupImage.setAttribute('alt', alt);
-    cardSubtitle.textContent = cardText;
+    cardSubtitle.textContent = name;
   });
 
 
@@ -134,22 +134,22 @@ function createCard(cardText, src, alt) {
 }
 
 function renderCard(card) {
-  cardsBlock.prepend(createCard(card.cardText, card.src, card.alt));
+  cardsBlock.prepend(createCard(card.name, card.link, card.alt));
 }
 
 
-const card1 = { cardText: 'Карачаевск', src: './images/Karachaevsk.png', alt: 'Карачаевск' }
-const card2 = { cardText: 'Домбай', src: './images/Dombay.png', alt: 'Домбай' }
-const card3 = { cardText: 'Эльбрус', src: './images/Elbrus.png', alt: 'Эльбрус' }
-const card4 = { cardText: 'Камчатка', src: './images/Kamchatka.png', alt: 'Камчатка' }
-const card5 = { cardText: 'Мурманск', src: './images/Murmansk.png', alt: 'Мурманск' }
-const card6 = { cardText: 'Териберка', src: './images/Teriberka.png', alt: 'Териберка' }
-
-const cardsDefault = [card1, card2, card3, card4, card5, card6]
-
+const cardsDefault = [
+  { name: 'Карачаевск', link: './images/Karachaevsk.png' },
+  { name: 'Домбай', link: './images/Dombay.png' },
+  { name: 'Эльбрус', link: './images/Elbrus.png' },
+  { name: 'Камчатка', link: './images/Kamchatka.png' },
+  { name: 'Мурманск', link: './images/Murmansk.png' },
+  { name: 'Териберка', link: './images/Teriberka.png' },
+]
 cardsDefault.forEach(function (element) {
   renderCard(element)
 })
+
 
 const placeForm = document.querySelector('.popup__form_place');
 const src = placeForm.querySelector('.popup-card-secondname');
@@ -161,8 +161,9 @@ function getFormValue(event) {
   event.preventDefault();
 
   const values = {
-    cardText: cardText.value,
-    src: src.value,
+    name: cardText.value,
+    link: src.value,
+    alt: cardText.value
   }
   createCard(renderCard(values));
 }

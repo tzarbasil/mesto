@@ -165,8 +165,8 @@ const options = {
 }
 
 
-const formValidatorProfile = new FormValidator(options, popupEditForm);
-formValidatorProfile.enableValidation();
+const editFormValidation = new FormValidator(options, popupEditForm);
+editFormValidation.enableValidation();
 
-const formValidatorCard = new FormValidator(options, popupPlaceForm);
-formValidatorCard.enableValidation();
+const cardFormValidation = new FormValidator(options, popupPlaceForm);
+cardFormValidation.enableValidation();

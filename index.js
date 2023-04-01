@@ -1,32 +1,42 @@
-//Попапы
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
+// //Попапы
 const popupProfile = document.querySelector('.popup_type_profile-edit');
 const popupPlace = document.querySelector('.popup_type_place-edit');
 const popupImage = document.querySelector('.popup__card-image');
 const cardImagePopup = document.querySelector('.popup_type_card');
-const popupOverlayList = document.querySelectorAll('.popup__overlay')
 const popupList = document.querySelectorAll('.popup')
-//Кнопки
+
+// //Кнопки
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonClosePopupList = document.querySelectorAll('.popup__close-button');
 const buttonAddPopup = document.querySelector('.profile__button');
 
+// Для карточек
 const cardSubtitle = document.querySelector('.popup__card-subtitle');
+const placesContainer = document.querySelector('.card')
+const cardNameInput = document.querySelector('.popup-card-name');
+const cardLinkInput = document.querySelector('.popup-card-secondname');
+const cards = document.querySelector('section.card')
+const cardSubmitButton = document.querySelector('.popup__submit_place')
 
+// Все формы
 const formElements = document.querySelectorAll('.popup__form');
+
+// Инпуты
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_subtitle');
 
-
+// Профиль
 const profileTitle = document.querySelector('.profile__title');
 const profileSubitle = document.querySelector('.profile__subtitle');
 
-nameInput.value = document.querySelector('.profile__title').textContent;
-jobInput.value = document.querySelector('.profile__subtitle').textContent;
+// Формы
+const popupEditForm = document.querySelector('.popup__form_edit');
+const popupPlaceForm = document.querySelector('.popup__form_place');
 
-const cardTemplate = document.querySelector('#card__template').content
-const cardsBlock = document.querySelector('section.card');
-
-
+// Открытие/закрытие попапов /////////////////////////////////////////////////
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc)
@@ -36,6 +46,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened')
   document.removeEventListener('keydown', closeByEsc)
 }
+
 
 
 function closeByEsc(evt) {
@@ -53,9 +64,6 @@ popupList.forEach(function (overlayPopup) {
   })
 })
 
-buttonEditProfile.addEventListener('click', function () {
-  openPopup(popupProfile)
-});
 
 buttonClosePopupList.forEach(function (buttonClosePopupList) {
   buttonClosePopupList.addEventListener('click', function (event) {
@@ -63,79 +71,22 @@ buttonClosePopupList.forEach(function (buttonClosePopupList) {
   })
 })
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Кнопки редактировния
+
+buttonEditProfile.addEventListener('click', function () {
+  openPopup(popupProfile)
+});
+
+
 buttonAddPopup.addEventListener('click', function () {
   openPopup(popupPlace);
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-const options = {
-  formSelector: '.popup__form',
-  submitSelector: '.popup__submit',
-  inputSelector: '.popup__input',
-  inputSectionSelector: '.popup__field-text',
-  inputErrorSelector: '.popup__form-input-error',
-  inputErrorClass: 'popup__form-input-error_active',
-  inputPopupClass: 'popup__input_type_error',
-  disabledButtonClass: 'popup__submit_inactive',
-}
-
-enableValidation(options)
-
-function handleFormSubmit(evt) {
-  closePopup(popupProfile);
-
-  const profileName = nameInput.value
-  const subtitle = jobInput.value
-
-  profileTitle.textContent = profileName;
-  profileSubitle.textContent = subtitle;
-  evt.preventDefault();
-}
-
-
-formElements.forEach(function (formElements) {
-  formElements.addEventListener('submit', handleFormSubmit);
-})
-
-function createCard(name, link, alt) {
-
-  const cardContainer = cardTemplate.querySelector('.card__container').cloneNode(true);
-  const cardImg = cardContainer.querySelector('.card__image')
-  const cardTitle = cardContainer.querySelector('.card__title')
-  const cardLikeButton = cardContainer.querySelector('.card__like')
-  const cardDeleteButton = cardContainer.querySelector('.card__delete');
-
-  cardImg.setAttribute('src', link);
-  cardImg.setAttribute('alt', alt)
-  cardTitle.textContent = name;
-
-  cardDeleteButton.addEventListener('click', function () {
-    const deleteCard = cardDeleteButton.closest('article')
-    deleteCard.remove()
-  });
-
-
-  cardLikeButton.addEventListener('click', function () {
-    cardLikeButton.classList.toggle('card__like_active')
-  })
-
-  cardImg.addEventListener('click', function () {
-    openPopup(cardImagePopup)
-    popupImage.setAttribute('src', link);
-    popupImage.setAttribute('alt', alt);
-    cardSubtitle.textContent = name;
-  });
-
-
-
-
-  return cardContainer;
-}
-
-function renderCard(card) {
-  cardsBlock.prepend(createCard(card.name, card.link, card.alt));
-}
+// Создание карточек
 
 
 const cardsDefault = [
@@ -146,29 +97,76 @@ const cardsDefault = [
   { name: 'Мурманск', link: './images/Murmansk.png' },
   { name: 'Териберка', link: './images/Teriberka.png' },
 ]
-cardsDefault.forEach(function (element) {
-  renderCard(element)
+
+// Открывается попап изображения
+const openImagePopup = (title, imageUrl) => {
+  openPopup(cardImagePopup);
+  popupImage.setAttribute("src", imageUrl);
+  popupImage.setAttribute("alt", title);
+  cardSubtitle.textContent = title;
+  console.log('открылся попа чево')
+};
+
+const render = (link, title) => {
+  const cardData = {
+    title: title,
+    link: link,
+  };
+
+  const card = new Card(cardData, "#card__template", openImagePopup);
+  placesContainer.prepend(card.renderElements());
+};
+
+cardsDefault.forEach((item) => {
+  render(item.link, item.name);
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Добавление карточки и сабмиты
+function createCard(evt) {
+  evt.preventDefault();
+  const card = new Card({ title: cardNameInput.value, link: cardLinkInput.value }, "#card__template", openImagePopup);
+  cards.prepend(card.renderElements());
+  closePopup(popupPlace);
+}
+
+cardSubmitButton.addEventListener('click', createCard);
+
+
+function formSubmit(evt) {
+  closePopup(popupProfile);
+  const profileName = nameInput.value
+  const subtitle = jobInput.value
+  profileTitle.textContent = profileName;
+  profileSubitle.textContent = subtitle;
+  evt.preventDefault();
+}
+
+formElements.forEach(function (formElements) {
+  formElements.addEventListener('submit', formSubmit);
 })
 
 
-const placeForm = document.querySelector('.popup__form_place');
-const src = placeForm.querySelector('.popup-card-secondname');
-const cardText = placeForm.querySelector('.popup-card-name');
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-function getFormValue(event) {
-  closePopup(popupPlace);
-  event.preventDefault();
-
-  const values = {
-    name: cardText.value,
-    link: src.value,
-    alt: cardText.value
-  }
-  createCard(renderCard(values));
+// Валидация профилей 
+const options = {
+  // ВЫБОР ИНПУТА
+  inputSelector: '.popup__input',
+  //Нижнее подчёркивание
+  inputPopupClass: 'popup__input_type_error',
+  // ДОБАВЛЕНИЕ НАДПИСИ ДЛЯ СПАНА
+  inputErrorClass: 'popup__form-input-error_active',
+  // САБМИТ
+  submitSelector: '.popup__submit',
+  // ВЫКЛЮЧЕННЫЙ САБМИТ
+  disabledButtonClass: 'popup__submit_inactive',
 }
 
-placeForm.addEventListener('submit', getFormValue);
 
+const formValidatorProfile = new FormValidator(options, popupEditForm);
+formValidatorProfile.enableValidation();
 
-
+const formValidatorCard = new FormValidator(options, popupPlaceForm);
+formValidatorCard.enableValidation();

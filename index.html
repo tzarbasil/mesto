@@ -10,6 +10,7 @@
 </head>
 
 <body class="body">
+  <div id="app"></div>
   <div class="page">
     <header class="header">
       <img class="header__logo" src="./images/logo.svg" alt="Место">
@@ -27,6 +28,8 @@
         <button class="profile__button" type="button" aria-label="Добавить"></button>
       </section>
 
+
+      <!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ-->
       <section class="card" aria-label="Карточки">
         <template id="card__template">
           <article class="card__container">
@@ -40,7 +43,8 @@
         </template>
       </section>
     </main>
-
+    <!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ-->
+    <section class="cards"></section>
 
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
@@ -50,9 +54,9 @@
     <div class="popup popup_type_profile-edit">
       <div class="popup__container">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form action="#" class="popup__form" name="popup__form">
-          <div class="popup__field">
 
+        <form action="#" class="popup__form popup__form_edit" name="popup__form">
+          <div class="popup__field">
             <div class="popup__field-text">
               <input class="popup__input popup__input_type_name" type="text" value="" placeholder="Ваше имя"
                 minlength="2" maxlength="40" required>
@@ -60,13 +64,14 @@
             </div>
 
             <div class="popup__field-text">
-              <input class="popup__input popup__input_type_subtitle" type="text" value=""
-                placeholder="Подпись" minlength="2" maxlength="200" required>
+              <input class="popup__input popup__input_type_subtitle" type="text" value="" placeholder="Подпись"
+                minlength="2" maxlength="200" required>
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
             </div>
           </div>
           <button class="popup__submit" type='submit'>Сохранить</button>
         </form>
+
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>
     </div>
@@ -76,6 +81,7 @@
     <div class="popup popup_type_place-edit">
       <div class="popup__container">
         <h3 class="popup__title">Новое место</h3>
+
         <form action="#" class="popup__form popup__form_place" name="popup__form">
           <div class="popup__field">
             <div class="popup__field-text">
@@ -89,7 +95,7 @@
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
             </div>
           </div>
-          <button class="popup__submit" type='submit'>Создать</button>
+          <button class="popup__submit popup__submit_place" type='submit'>Создать</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>
@@ -104,8 +110,10 @@
       </div>
     </div>
   </div>
-  <script src="./validate.js"></script>
-  <script src="./index.js"></script>
+
+  <script type="module" src="index.js"></script>
+  <script type="module" src="Card.js"></script>
+  <script type="module" src="FormValidator.js"></script>
 </body>
 
 </html>

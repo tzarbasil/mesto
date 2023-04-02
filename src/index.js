@@ -37,6 +37,8 @@ const profileSubitle = document.querySelector('.profile__subtitle');
 const popupEditForm = document.querySelector('.popup__form_edit');
 const popupPlaceForm = document.querySelector('.popup__form_place');
 
+nameInput.value = profileTitle.textContent
+jobInput.value = profileSubitle.textContent
 // Открытие/закрытие попапов /////////////////////////////////////////////////
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -120,7 +122,6 @@ function submitEditProfileForm(evt) {
   profileTitle.textContent = profileName;
   profileSubitle.textContent = subtitle;
   evt.preventDefault();
-  document.querySelector('.popup__form').reset();
 }
 
 formElements.forEach(function (formElements) {

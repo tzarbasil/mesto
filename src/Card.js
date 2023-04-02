@@ -30,29 +30,25 @@ class Card {
     this._likeButton.classList.toggle("card__like_active");
   }
 
-
   _setEventListeners() {
     this._deleteButton.addEventListener('click', () => {
       this._deleteCard()
     });
-
 
     this._likeButton.addEventListener('click', () => {
       this._likeCard()
     });
 
     this._cardImage.addEventListener('click', () => { this.openPopup() });
-
   }
 
   openPopup() {
     this._openImagePopup(this._title, this._link);
   }
 
-
-  renderElements() {
-    this._cardImage.src = this._link;
-    this._cardTitle.textContent = this._title;
+  renderElements(link = this._link, title = this._title) {
+    this._cardImage.src = link;
+    this._cardTitle.textContent = title;
     return this._cardContainer;
   }
 }

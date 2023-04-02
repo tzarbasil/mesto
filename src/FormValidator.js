@@ -14,7 +14,6 @@ class FormValidator {
     this._disabledButtonClass = options.disabledButtonClass;
   }
 
-
   _settingInputs(input) {
     // this._errorElement = document.querySelector('.popup__form-input-error');
     this._errorElement = input.parentNode.querySelector('.popup__form-input-error')
@@ -48,6 +47,7 @@ class FormValidator {
         this._settingInputs(input);
         this._toggleButtonState();
       })
+    this._formElement.reset()
     })
   }
 

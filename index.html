@@ -69,7 +69,7 @@
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
             </div>
           </div>
-          <button class="popup__submit" type='submit'>Сохранить</button>
+          <button class="popup__submit popup__submit_inactive" type='submit'>Сохранить</button>
         </form>
 
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
@@ -95,7 +95,7 @@
               <span class="popup__form-input-error">Вы пропустили это поле.</span>
             </div>
           </div>
-          <button class="popup__submit popup__submit_place" type='submit'>Создать</button>
+          <button class="popup__submit popup__submit_place popup__submit_inactive" type='submit'>Создать</button>
         </form>
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
       </div>
@@ -111,9 +111,11 @@
     </div>
   </div>
 
-  <script type="module" src="index.js"></script>
-  <script type="module" src="Card.js"></script>
-  <script type="module" src="FormValidator.js"></script>
+  <script type="module" src="./src/Card.js"></script>
+  <script type="module" src="./src/constants.js"></script>
+  <script type="module" src="./src/FormValidator.js"></script>
+  <script type="module" src="./src/index.js"></script>
+
 </body>
 
 </html>

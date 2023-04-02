@@ -20,6 +20,7 @@ const cardNameInput = document.querySelector('.popup-card-name');
 const cardLinkInput = document.querySelector('.popup-card-secondname');
 const cards = document.querySelector('section.card')
 const cardSubmitButton = document.querySelector('.popup__submit_place')
+const submitButton = document.querySelector('.popup__submit')
 
 // Все формы
 const formElements = document.querySelectorAll('.popup__form');
@@ -40,6 +41,7 @@ const popupPlaceForm = document.querySelector('.popup__form_place');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc)
+  submitButton.classList.add('popup__submit_inactive')
 }
 
 function closePopup(popup) {

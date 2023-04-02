@@ -47,7 +47,6 @@ class FormValidator {
         this._settingInputs(input);
         this._toggleButtonState();
       })
-    this._formElement.reset()
     })
   }
 

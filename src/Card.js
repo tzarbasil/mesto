@@ -2,7 +2,7 @@ class Card {
   constructor(data, templateSelector, openImagePopup) {
 
     this._openImagePopup = openImagePopup;
-    this._title = data.title;
+    this._title = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._template = this._getTemplate();
@@ -46,9 +46,9 @@ class Card {
     this._openImagePopup(this._title, this._link);
   }
 
-  renderElements(link = this._link, title = this._title) {
+  renderElements(link = this._link, name = this._title) {
     this._cardImage.src = link;
-    this._cardTitle.textContent = title;
+    this._cardTitle.textContent = name;
     return this._cardContainer;
   }
 }

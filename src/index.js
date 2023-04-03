@@ -19,11 +19,6 @@ const cardSubtitle = document.querySelector('.popup__card-subtitle');
 const cardNameInput = document.querySelector('.popup-card-name');
 const cardLinkInput = document.querySelector('.popup-card-secondname');
 const cards = document.querySelector('section.card')
-const cardSubmitButton = document.querySelector('.popup__submit_place')
-const submitButton = document.querySelector('.popup__submit')
-
-// Все формы
-const formElements = document.querySelectorAll('.popup__form');
 
 // Инпуты
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -37,14 +32,18 @@ const profileSubitle = document.querySelector('.profile__subtitle');
 const popupEditForm = document.querySelector('.popup__form_edit');
 const popupPlaceForm = document.querySelector('.popup__form_place');
 
-nameInput.value = profileTitle.textContent
-jobInput.value = profileSubitle.textContent
+
 // Открытие/закрытие попапов /////////////////////////////////////////////////
+
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc)
-  submitButton.classList.add('popup__submit_inactive')
+  if (popup.classList.contains('popup_type_place-edit')) { cardFormValidation.toggleButtonState(true); }
+  if (popup.classList.contains('popup_type_profile-edit')) { editFormValidation.toggleButtonState(true); }
 }
+
+
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
@@ -78,6 +77,8 @@ buttonClosePopupList.forEach(function (buttonClosePopupList) {
 
 buttonEditProfile.addEventListener('click', function () {
   openPopup(popupProfile)
+  nameInput.value = profileTitle.textContent
+  jobInput.value = profileSubitle.textContent
 });
 
 buttonAddPopup.addEventListener('click', function () {
@@ -95,25 +96,29 @@ const openImagePopup = (name, imageUrl) => {
   cardSubtitle.textContent = name;
 };
 
-
 cardsDefault.forEach((item) => {
-  const newCard = new Card({ link: item.link, title: item.name }, "#card__template", openImagePopup)
-  cards.prepend(newCard.renderElements());
-
+  createCard(item.name, item.link)
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Добавление карточки и сабмиты
-function createCard(evt) {
+function createCardFormInput(evt) {
   evt.preventDefault();
-  const cardNew = new Card({ title: cardNameInput.value, link: cardLinkInput.value }, "#card__template", openImagePopup);
-  cards.prepend(cardNew.renderElements());
-  closePopup(popupPlace);
-  document.querySelector('.popup__form_place').reset();
+  createCard(cardNameInput.value, cardLinkInput.value)
+
 }
 
-cardSubmitButton.addEventListener('click', createCard);
+
+// создание карточки
+function createCard(name, link) {
+  const cardNew = new Card({ name: name, link: link }, "#card__template", openImagePopup);
+  cards.prepend(cardNew.renderElements());
+  closePopup(popupPlace);
+  popupPlaceForm.reset();
+}
+
+popupPlaceForm.addEventListener('submit', createCardFormInput);
 
 function submitEditProfileForm(evt) {
   closePopup(popupProfile);
@@ -124,9 +129,8 @@ function submitEditProfileForm(evt) {
   evt.preventDefault();
 }
 
-formElements.forEach(function (formElements) {
-  formElements.addEventListener('submit', submitEditProfileForm);
-})
+popupEditForm.addEventListener('submit', submitEditProfileForm);
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

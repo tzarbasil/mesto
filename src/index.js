@@ -39,11 +39,7 @@ const popupPlaceForm = document.querySelector('.popup__form_place');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc)
-  if (popup.classList.contains('popup_type_place-edit')) { cardFormValidation.toggleButtonState(true); }
-  if (popup.classList.contains('popup_type_profile-edit')) { editFormValidation.toggleButtonState(true); }
 }
-
-
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
@@ -79,10 +75,12 @@ buttonEditProfile.addEventListener('click', function () {
   openPopup(popupProfile)
   nameInput.value = profileTitle.textContent
   jobInput.value = profileSubitle.textContent
+  editFormValidation.toggleButtonState(true);
 });
 
 buttonAddPopup.addEventListener('click', function () {
   openPopup(popupPlace);
+  cardFormValidation.toggleButtonState(true);
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -97,25 +95,28 @@ const openImagePopup = (name, imageUrl) => {
 };
 
 cardsDefault.forEach((item) => {
-  createCard(item.name, item.link)
+  renderCard(createCard(item.name, item.link))  
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Добавление карточки и сабмиты
+// Добавление карточки через попап
 function createCardFormInput(evt) {
   evt.preventDefault();
-  createCard(cardNameInput.value, cardLinkInput.value)
-
+  const cardNew = createCard(cardNameInput.value, cardLinkInput.value)
+  closePopup(popupPlace);
+  console.log(cardNew)
+  popupPlaceForm.reset();
+  renderCard(cardNew)
 }
 
-
-// создание карточки
-function createCard(name, link) {
-  const cardNew = new Card({ name: name, link: link }, "#card__template", openImagePopup);
+function renderCard(cardNew){
   cards.prepend(cardNew.renderElements());
-  closePopup(popupPlace);
-  popupPlaceForm.reset();
+}
+
+// возврат карточки
+function createCard(name, link) {
+  return new Card({ name: name, link: link }, "#card__template", openImagePopup);
 }
 
 popupPlaceForm.addEventListener('submit', createCardFormInput);

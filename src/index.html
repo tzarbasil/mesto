@@ -4,8 +4,6 @@
 <head>
   <meta charset="utf-8">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
-  <link rel="stylesheet" href="normalize.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -13,13 +11,13 @@
   <div id="app"></div>
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Место">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Место">
     </header>
 
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.png" alt="Ваш аватар">
+        <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Ваш аватар">
         <div class="profile__wrap">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
@@ -29,7 +27,6 @@
       </section>
 
 
-      <!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ-->
       <section class="card" aria-label="Карточки">
         <template id="card__template">
           <article class="card__container">
@@ -43,11 +40,10 @@
         </template>
       </section>
     </main>
-    <!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ--><!--КАРТОЧКИ-->
     <section class="cards"></section>
 
     <footer class="footer">
-      <p class="footer__copyright">© 2022 Mesto Russia</p>
+      <p class="footer__copyright">© 2022-2023 Mesto Russia</p>
     </footer>
 
     <!--Попап редактирования профиля-->
@@ -60,13 +56,13 @@
             <div class="popup__field-text">
               <input class="popup__input popup__input_type_name" type="text" value="" placeholder="Ваше имя"
                 minlength="2" maxlength="40" required>
-              <span class="popup__form-input-error">Вы пропустили это поле.</span>
+              <span class="popup__form-input-error">Вы пропустили это поле</span>
             </div>
 
             <div class="popup__field-text">
               <input class="popup__input popup__input_type_subtitle" type="text" value="" placeholder="Подпись"
                 minlength="2" maxlength="200" required>
-              <span class="popup__form-input-error">Вы пропустили это поле.</span>
+              <span class="popup__form-input-error">Вы пропустили это поле</span>
             </div>
           </div>
           <button class="popup__submit popup__submit_inactive" type='submit'>Сохранить</button>
@@ -87,12 +83,12 @@
             <div class="popup__field-text">
               <input id="place-name-input" type="text" class="popup__input popup-card-name" value=""
                 placeholder="Название" minlength="2" maxlength="30" required>
-              <span class="popup__form-input-error">Вы пропустили это поле.</span>
+              <span class="popup__form-input-error">Вы пропустили это поле</span>
             </div>
             <div class="popup__field-text">
               <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value=""
                 placeholder="Ссылка на картинку" required>
-              <span class="popup__form-input-error">Вы пропустили это поле.</span>
+              <span class="popup__form-input-error">Вы пропустили это поле</span>
             </div>
           </div>
           <button class="popup__submit popup__submit_place popup__submit_inactive" type='submit'>Создать</button>
@@ -110,12 +106,6 @@
       </div>
     </div>
   </div>
-
-  <script type="module" src="./src/Card.js"></script>
-  <script type="module" src="./src/constants.js"></script>
-  <script type="module" src="./src/FormValidator.js"></script>
-  <script type="module" src="./src/index.js"></script>
-
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 class FormValidator {
   constructor(options, formElement) {
-    // ФОорма
+    // Форма
     this._formElement = formElement;
     // Выбор инпута
     this._inputSelector = options.inputSelector;
@@ -15,7 +15,6 @@ class FormValidator {
   }
 
   _settingInputs(input) {
-    // this._errorElement = document.querySelector('.popup__form-input-error');
     this._errorElement = input.parentNode.querySelector('.popup__form-input-error')
     if (input.validity.valid) {
       this._errorElement.textContent = '';

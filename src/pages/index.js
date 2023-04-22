@@ -8,7 +8,7 @@ import './index.css'; // добавьте импорт главного файл
 
 import {
   cardsDefault, popupProfile, popupPlace, cardImagePopup, buttonEditProfile, buttonAddPopup, cardNameInput, cardLinkInput, cards, nameInput,
-  jobInput, popupEditForm, popupPlaceForm, options, profileTitle, profileSubitle
+  jobInput, popupEditForm, popupPlaceForm, options
 } from '../utils/constants.js';
 
 // Профиль

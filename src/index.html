@@ -14,7 +14,6 @@
       <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Место">
     </header>
 
-
     <main class="content">
       <section class="profile">
         <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Ваш аватар">
@@ -25,7 +24,6 @@
         </div>
         <button class="profile__button" type="button" aria-label="Добавить"></button>
       </section>
-
 
       <section class="card" aria-label="Карточки">
         <template id="card__template">
@@ -53,17 +51,17 @@
 
         <form action="#" class="popup__form popup__form_edit" name="popup__form">
           <div class="popup__field">
-            <div class="popup__field-text">
+            <label class="popup__field-text">
               <input class="popup__input popup__input_type_name" type="text" value="" placeholder="Ваше имя"
                 minlength="2" maxlength="40" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
-            </div>
+            </label>
 
-            <div class="popup__field-text">
+            <label class="popup__field-text">
               <input class="popup__input popup__input_type_subtitle" type="text" value="" placeholder="Подпись"
                 minlength="2" maxlength="200" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
-            </div>
+            </label>
           </div>
           <button class="popup__submit popup__submit_inactive" type='submit'>Сохранить</button>
         </form>
@@ -80,16 +78,16 @@
 
         <form action="#" class="popup__form popup__form_place" name="popup__form">
           <div class="popup__field">
-            <div class="popup__field-text">
+            <label class="popup__field-text">
               <input id="place-name-input" type="text" class="popup__input popup-card-name" value=""
                 placeholder="Название" minlength="2" maxlength="30" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
-            </div>
-            <div class="popup__field-text">
+            </label>
+            <label class="popup__field-text">
               <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value=""
                 placeholder="Ссылка на картинку" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
-            </div>
+            </label>
           </div>
           <button class="popup__submit popup__submit_place popup__submit_inactive" type='submit'>Создать</button>
         </form>

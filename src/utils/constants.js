@@ -15,25 +15,33 @@ export const cardsDefault = [
 ]
 
 export const options = {
+  // Выбор формы
+  formSelector: '.popup__form',
   // ВЫБОР ИНПУТА
   inputSelector: '.popup__input',
+  // ВЫБОР ЛЕЙБЛ
+  labelSelector: '.popup__field-text',
   //Нижнее подчёркивание
   inputPopupClass: 'popup__input_type_error',
   // ДОБАВЛЕНИЕ НАДПИСИ ДЛЯ СПАНА
-  inputErrorClass: 'popup__form-input-error_active',
+  inputErrorClass: '.popup__form-input-error',
+  inputErrorClassActive: 'popup__form-input-error_active',
   // САБМИТ
   submitSelector: '.popup__submit',
   // ВЫКЛЮЧЕННЫЙ САБМИТ
   disabledButtonClass: 'popup__submit_inactive',
 }
 
+
+
 // //Попапы
-export const popupProfile = document.querySelector('.popup_type_profile-edit');
-export const popupPlace = document.querySelector('.popup_type_place-edit');
-export const popupImage = document.querySelector('.popup__card-image');
-export const cardImagePopup = document.querySelector('.popup_type_card');
-export const popupList = document.querySelector('.popup')
-export const submitForm = document.querySelector('.popup__submit')
+export const popupProfile = '.popup_type_profile-edit';
+export const popupPlace = '.popup_type_place-edit';
+export const popupImage = '.popup__card-image';
+export const cardImagePopup = '.popup_type_card'
+// export const cardImagePopup = document.querySelector('.popup_type_card');
+export const popupList = '.popup'
+export const submitForm = '.popup__submit'
 
 // //Кнопки
 export const buttonEditProfile = document.querySelector('.profile__edit-button');

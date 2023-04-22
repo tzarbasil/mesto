@@ -1,25 +1,22 @@
-import PopupWithImage from "./scripts/PopupWithImage.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
-import UserInfo from "./scripts/UserInfo.js";
-import Card from "./scripts/Card.js";
-import FormValidator from "./scripts/FormValidator.js";
-import Section from "./scripts/Section.js";
-import './pages/index.css'; // добавьте импорт главного файла стилей
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
+import UserInfo from "../scripts/UserInfo.js";
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import Section from "../scripts/Section.js";
+import './index.css'; // добавьте импорт главного файла стилей
 
 import {
   cardsDefault, popupProfile, popupPlace, cardImagePopup, buttonEditProfile, buttonAddPopup, cardNameInput, cardLinkInput, cards, nameInput,
-  jobInput, popupEditForm, popupPlaceForm, options
-} from './scripts/constants.js';
-
+  jobInput, popupEditForm, popupPlaceForm, options, profileTitle, profileSubitle
+} from '../utils/constants.js';
 
 // Профиль
-const addUserInfo = (input) => {
+const addUserInfo = () => {
   userInfo.setUserInfo({
-    profileName: input[0],
-    profileSubtitle: input[1]
+    profileName: nameInput.value,
+    profileSubtitle: jobInput.value
   });
-  openProfilePopup.closepopup();
-  popupEditForm.reset()
 };
 
 const openEditPopup = () => {
@@ -29,14 +26,16 @@ const openEditPopup = () => {
   openProfilePopup.open();
 };
 
+
 const editFormValidation = new FormValidator(options, popupEditForm);
 editFormValidation.enableValidation();
+
 
 const openProfilePopup = new PopupWithForm(popupProfile, addUserInfo)
 
 const userInfo = new UserInfo({
-  title: ".profile__title",
-  subtitle: ".profile__subtitle",
+  titleSelector: ".profile__title",
+  subtitleSelector: ".profile__subtitle",
 });
 
 buttonEditProfile.addEventListener('click', openEditPopup)
@@ -57,13 +56,7 @@ const createCard = (data) => {
   const card = new Card(data, "#card__template", () => {
     newPopupWithImage.open(data);
   });
-  return card.renderElements();
-};
-
-const renderCards = (data) => {
-  renderDefaultCards.prependItem(createCard(data));
-  openPlacePopup.closepopup()
-  popupPlaceForm.reset()
+  return card.createElement();
 };
 
 const addCard = () => {
@@ -71,7 +64,7 @@ const addCard = () => {
     name: cardNameInput.value,
     link: cardLinkInput.value
   };
-  renderCards(cardItem);
+  renderDefaultCards.prependItem(createCard(cardItem));
 };
 
 const renderDefaultCards = new Section(

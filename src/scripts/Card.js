@@ -33,9 +33,7 @@ export default class Card {
       this._deleteCard()
     });
 
-    this._likeButton.addEventListener('click', () => {
-      this._likeCard()
-    });
+    this._likeButton.addEventListener('click', this._likeCard.bind(this));
 
     this._cardImage.addEventListener("click", () => {
       this._openPopupImage();
@@ -46,8 +44,9 @@ export default class Card {
     this._handleCardClick(this._title, this._link);
   }
 
-  renderElements() {
+  createElement() {
     this._cardImage.src = this._link;
+    this._cardImage.alt = this._title;
     this._cardTitle.textContent = this._title;
     return this._cardContainer;
   }

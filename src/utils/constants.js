@@ -50,9 +50,9 @@ export const buttonAddPopup = document.querySelector('.profile__button');
 
 // Для карточек
 export const cardSubtitle = document.querySelector('.popup__card-subtitle');
-export const cardNameInput = document.querySelector('.popup-card-name');
-export const cardLinkInput = document.querySelector('.popup-card-secondname');
-export const cards = document.querySelector('section.card')
+// export const cardNameInput = document.querySelector('.popup-card-name');
+// export const cardLinkInput = document.querySelector('.popup-card-secondname');
+export const cards = 'section.card'
 
 // Инпуты
 export const nameInput = document.querySelector('.popup__input_type_name');

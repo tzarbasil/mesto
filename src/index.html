@@ -52,13 +52,13 @@
         <form action="#" class="popup__form popup__form_edit" name="popup__form">
           <div class="popup__field">
             <label class="popup__field-text">
-              <input class="popup__input popup__input_type_name" type="text" value="" placeholder="Ваше имя"
+              <input class="popup__input popup__input_type_name" type="text" value="" placeholder="Ваше имя" name="name"
                 minlength="2" maxlength="40" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
             </label>
 
             <label class="popup__field-text">
-              <input class="popup__input popup__input_type_subtitle" type="text" value="" placeholder="Подпись"
+              <input class="popup__input popup__input_type_subtitle" type="text" value="" placeholder="Подпись" name="title"
                 minlength="2" maxlength="200" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
             </label>
@@ -79,12 +79,12 @@
         <form action="#" class="popup__form popup__form_place" name="popup__form">
           <div class="popup__field">
             <label class="popup__field-text">
-              <input id="place-name-input" type="text" class="popup__input popup-card-name" value=""
+              <input id="place-name-input" type="text" class="popup__input popup-card-name" value="" name = "cardName"
                 placeholder="Название" minlength="2" maxlength="30" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
             </label>
             <label class="popup__field-text">
-              <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value=""
+              <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value="" name = "cardLink"
                 placeholder="Ссылка на картинку" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
             </label>

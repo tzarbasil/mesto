@@ -7,15 +7,15 @@ import Section from "../scripts/Section.js";
 import './index.css'; // добавьте импорт главного файла стилей
 
 import {
-  cardsDefault, popupProfile, popupPlace, cardImagePopup, buttonEditProfile, buttonAddPopup, cardNameInput, cardLinkInput, cards, nameInput,
+  cardsDefault, popupProfile, popupPlace, cardImagePopup, buttonEditProfile, buttonAddPopup, cards, nameInput,
   jobInput, popupEditForm, popupPlaceForm, options
 } from '../utils/constants.js';
 
 // Профиль
-const addUserInfo = () => {
+const addUserInfo = (inputValues) => {
   userInfo.setUserInfo({
-    profileName: nameInput.value,
-    profileSubtitle: jobInput.value
+    profileName: inputValues.name,
+    profileSubtitle: inputValues.title
   });
 };
 
@@ -59,26 +59,26 @@ const createCard = (data) => {
   return card.createElement();
 };
 
-const addCard = () => {
+const addCard = (inputValues) => {
   const cardItem = {
-    name: cardNameInput.value,
-    link: cardLinkInput.value
+    name: inputValues.cardName,
+    link: inputValues.cardLink
   };
-  renderDefaultCards.prependItem(createCard(cardItem));
+  cardsList.prependItem(createCard(cardItem));
 };
 
-const renderDefaultCards = new Section(
+const cardsList = new Section(
   {
     items: cardsDefault,
     renderer: (data) => {
-      renderDefaultCards.addItem(createCard(data));
+      cardsList.addItem(createCard(data));
     },
   },
   cards
 );
 const openPlacePopup = new PopupWithForm(popupPlace, addCard)
 
-renderDefaultCards.renderItems()
+cardsList.renderItems()
 
 openProfilePopup.setEventListeners()
 openPlacePopup.setEventListeners()

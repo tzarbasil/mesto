@@ -8,17 +8,9 @@ import './index.css';
 import { api } from "../scripts/Api.js";
 
 import {
-  cardsDefault, popupProfile, popupPlace, cardImagePopup, buttonEditProfile, buttonAddPopup, cards, nameInput,
+  popupProfile, popupPlace, cardImagePopup, buttonEditProfile, buttonAddPopup, cards, nameInput,
   jobInput, popupEditForm, popupPlaceForm, popupAvatar, popupConfirmation, buttonEditAvatar, options, popupAvatarForm
 } from '../utils/constants.js';
-
-// Профиль
-// const addUserInfo = (inputValues) => {
-//   userInfo.setUserInfo({
-//     name: inputValues.name,
-//     about: inputValues.title
-//   });
-// };
 
 
 const userInfo = new UserInfo({
@@ -28,7 +20,8 @@ const userInfo = new UserInfo({
 });
 
 
-Promise.all([api.getUserInfo(), api.getPlaceCards()])
+
+Promise.all([api.getProfileInformation(), api.getCards()])
 .then(([userData, placeCards]) => {
     userInfo.setUserInfo(userData);
     cardList.renderItems(placeCards);
@@ -46,9 +39,10 @@ const createCard = (data) => {
   return card.createElement();
 };
 
-  const handleFormSubmitEdit = (inputValues) => {
+
+  const submitProfileEdit = (inputValues) => {
     api
-      .sendUserInfo(inputValues)
+      .setProfileInformation(inputValues)
       .then((data) => {
         console.log(data)
         userInfo.setUserInfo(data);
@@ -58,8 +52,8 @@ const createCard = (data) => {
   };
 
 
-  const handleAvatarEditSubmit = (input) => {
-    api.patchAvatar(input.avatar)
+  const submitAvatarEdit = (input) => {
+    api.getAvatarInfo(input.avatar)
       .then((data) => {
         userInfo.setUserInfo(data);
         openAvatarPopup.close()
@@ -67,10 +61,10 @@ const createCard = (data) => {
       .catch(console.log);
   };
 
-  const addPlaceCard = (input) => {
-    api.postNewCard(input)
-      .then((data) => {
-        cardList.addItem(createCard(data));
+  const sendCards = (input) => {
+    api.addNewCard(input)
+      .then((res) => {
+        cardList.addItem(createCard(res), true);
         openPlacePopup.close()
       })
       .catch(console.log);
@@ -83,13 +77,6 @@ const openEditPopup = () => {
   openProfilePopup.open();
 };
 
-const editFormValidation = new FormValidator(options, popupEditForm);
-
-const avatarFormValidation = new FormValidator(options, popupAvatarForm);
-
-
-const placeFormValidation = new FormValidator(options, popupPlaceForm);
-
 
 buttonEditProfile.addEventListener('click', openEditPopup)
 
@@ -100,20 +87,23 @@ buttonAddPopup.addEventListener('click', () => {
 buttonEditAvatar.addEventListener('click', () => {
   openAvatarPopup.open()
 })
-const openPlacePopup = new PopupWithForm(popupPlace, addPlaceCard)
-const openAvatarPopup = new PopupWithForm(popupAvatar, handleAvatarEditSubmit)
-const openProfilePopup = new PopupWithForm(popupProfile, handleFormSubmitEdit)
+
+const editFormValidation = new FormValidator(options, popupEditForm);
+const avatarFormValidation = new FormValidator(options, popupAvatarForm);
+const placeFormValidation = new FormValidator(options, popupPlaceForm);
+
+const openPlacePopup = new PopupWithForm(popupPlace, sendCards)
+const openAvatarPopup = new PopupWithForm(popupAvatar, submitAvatarEdit)
+const openProfilePopup = new PopupWithForm(popupProfile, submitProfileEdit)
 const newPopupWithImage = new PopupWithImage(cardImagePopup)
 
 editFormValidation.enableValidation();
 avatarFormValidation.enableValidation();
 placeFormValidation.enableValidation();
-
 openAvatarPopup.setEventListeners()
-
 openProfilePopup.setEventListeners()
 openPlacePopup.setEventListeners()
 newPopupWithImage.setEventListeners()
 
-//  Всё, что связано с АПИ
+
 

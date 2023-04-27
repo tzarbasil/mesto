@@ -1,56 +1,43 @@
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
-import UserInfo from "../scripts/UserInfo.js";
+import UserInfo from "../scripts/UserInfo";
 import Card from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
 import Section from "../scripts/Section.js";
-import './index.css'; // добавьте импорт главного файла стилей
+import './index.css';
+import { api } from "../scripts/Api.js";
 
 import {
   cardsDefault, popupProfile, popupPlace, cardImagePopup, buttonEditProfile, buttonAddPopup, cards, nameInput,
-  jobInput, popupEditForm, popupPlaceForm, options
+  jobInput, popupEditForm, popupPlaceForm, popupAvatar, popupConfirmation, buttonEditAvatar, options, popupAvatarForm
 } from '../utils/constants.js';
 
 // Профиль
-const addUserInfo = (inputValues) => {
-  userInfo.setUserInfo({
-    profileName: inputValues.name,
-    profileSubtitle: inputValues.title
-  });
-};
+// const addUserInfo = (inputValues) => {
+//   userInfo.setUserInfo({
+//     name: inputValues.name,
+//     about: inputValues.title
+//   });
+// };
 
-const openEditPopup = () => {
-  const userInformation = userInfo.getUserInfo();
-  nameInput.value = userInformation.profileName;
-  jobInput.value = userInformation.profileSubtitle;
-  openProfilePopup.open();
-};
-
-
-const editFormValidation = new FormValidator(options, popupEditForm);
-editFormValidation.enableValidation();
-
-
-const openProfilePopup = new PopupWithForm(popupProfile, addUserInfo)
 
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   subtitleSelector: ".profile__subtitle",
+  avatar: ".profile__avatar",
 });
 
-buttonEditProfile.addEventListener('click', openEditPopup)
 
+Promise.all([api.getUserInfo(), api.getPlaceCards()])
+.then(([userData, placeCards]) => {
+    userInfo.setUserInfo(userData);
+    cardList.renderItems(placeCards);
+  })
+  .catch(console.log);
 
-const placeFormValidation = new FormValidator(options, popupPlaceForm);
-placeFormValidation.enableValidation();
-
-buttonAddPopup.addEventListener('click', () => {
-  openPlacePopup.open()
-})
-
-const newPopupWithImage = new PopupWithImage(cardImagePopup)
-
-// Карточки
+const cardList = new Section((data) => {
+  cardList.addItem(createCard(data));
+}, cards);
 
 const createCard = (data) => {
   const card = new Card(data, "#card__template", () => {
@@ -59,28 +46,74 @@ const createCard = (data) => {
   return card.createElement();
 };
 
-const addCard = (inputValues) => {
-  const cardItem = {
-    name: inputValues.cardName,
-    link: inputValues.cardLink
+  const handleFormSubmitEdit = (inputValues) => {
+    api
+      .sendUserInfo(inputValues)
+      .then((data) => {
+        console.log(data)
+        userInfo.setUserInfo(data);
+        openProfilePopup.close()
+      })
+      .catch(console.log);
   };
-  cardsList.prependItem(createCard(cardItem));
+
+
+  const handleAvatarEditSubmit = (input) => {
+    api.patchAvatar(input.avatar)
+      .then((data) => {
+        userInfo.setUserInfo(data);
+        openAvatarPopup.close()
+      })
+      .catch(console.log);
+  };
+
+  const addPlaceCard = (input) => {
+    api.postNewCard(input)
+      .then((data) => {
+        cardList.addItem(createCard(data));
+        openPlacePopup.close()
+      })
+      .catch(console.log);
+  };
+  
+const openEditPopup = () => {
+  const userInformation = userInfo.getUserInfo();
+  nameInput.value = userInformation.name;
+  jobInput.value = userInformation.about;
+  openProfilePopup.open();
 };
 
-const cardsList = new Section(
-  {
-    items: cardsDefault,
-    renderer: (data) => {
-      cardsList.addItem(createCard(data));
-    },
-  },
-  cards
-);
-const openPlacePopup = new PopupWithForm(popupPlace, addCard)
+const editFormValidation = new FormValidator(options, popupEditForm);
 
-cardsList.renderItems()
+const avatarFormValidation = new FormValidator(options, popupAvatarForm);
+
+
+const placeFormValidation = new FormValidator(options, popupPlaceForm);
+
+
+buttonEditProfile.addEventListener('click', openEditPopup)
+
+buttonAddPopup.addEventListener('click', () => {
+  openPlacePopup.open()
+})
+
+buttonEditAvatar.addEventListener('click', () => {
+  openAvatarPopup.open()
+})
+const openPlacePopup = new PopupWithForm(popupPlace, addPlaceCard)
+const openAvatarPopup = new PopupWithForm(popupAvatar, handleAvatarEditSubmit)
+const openProfilePopup = new PopupWithForm(popupProfile, handleFormSubmitEdit)
+const newPopupWithImage = new PopupWithImage(cardImagePopup)
+
+editFormValidation.enableValidation();
+avatarFormValidation.enableValidation();
+placeFormValidation.enableValidation();
+
+openAvatarPopup.setEventListeners()
 
 openProfilePopup.setEventListeners()
 openPlacePopup.setEventListeners()
 newPopupWithImage.setEventListeners()
+
+//  Всё, что связано с АПИ
 

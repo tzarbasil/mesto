@@ -1,6 +1,6 @@
 export default class Card {
   constructor(data, templateSelector, handleCardClick) {
-    this._title = data.name;
+    this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._template = this._getTemplate();
@@ -46,8 +46,8 @@ export default class Card {
 
   createElement() {
     this._cardImage.src = this._link;
-    this._cardImage.alt = this._title;
-    this._cardTitle.textContent = this._title;
+    this._cardImage.alt = this._name;
+    this._cardTitle.textContent = this._name;
     return this._cardContainer;
   }
 }

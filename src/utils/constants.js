@@ -38,7 +38,10 @@ export const options = {
 export const popupProfile = '.popup_type_profile-edit';
 export const popupPlace = '.popup_type_place-edit';
 export const popupImage = '.popup__card-image';
-export const cardImagePopup = '.popup_type_card'
+export const cardImagePopup = '.popup_type_card';
+export const popupAvatar = '.popup_type_avatar';
+export const popupConfirmation = '.popup_type_confirmation'
+
 // export const cardImagePopup = document.querySelector('.popup_type_card');
 export const popupList = '.popup'
 export const submitForm = '.popup__submit'
@@ -47,6 +50,7 @@ export const submitForm = '.popup__submit'
 export const buttonEditProfile = document.querySelector('.profile__edit-button');
 export const buttonClosePopupList = document.querySelectorAll('.popup__close-button');
 export const buttonAddPopup = document.querySelector('.profile__button');
+export const buttonEditAvatar = document.querySelector('.profile__avatar_edit')
 
 // Для карточек
 export const cardSubtitle = document.querySelector('.popup__card-subtitle');
@@ -66,4 +70,5 @@ export const profileSubitle = document.querySelector('.profile__subtitle');
 // Формы
 export const popupEditForm = document.querySelector('.popup__form_edit');
 export const popupPlaceForm = document.querySelector('.popup__form_place');
-
+export const popupAvatarForm = document.querySelector('.popup__form_avatar')
+export const PopupDelete = document.querySelector('.popup-delete')

@@ -16,7 +16,12 @@
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Ваш аватар">
+
+        <div class="profile__avatar_wrap">
+        <img class="profile__avatar" alt="Ваш аватар">
+        <button class="profile__avatar_edit" aria-label="Изменить аватар" type="button"></button>
+      </div>
+      
         <div class="profile__wrap">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
@@ -32,7 +37,10 @@
             <img class="card__image">
             <div class="card__info">
               <h2 class="card__title"></h2>
+              <div class="like__container">
               <button class="card__like" type="button"></button>
+              <p class = card__like_counter>0</p>
+            </div>
             </div>
           </article>
         </template>
@@ -58,8 +66,8 @@
             </label>
 
             <label class="popup__field-text">
-              <input class="popup__input popup__input_type_subtitle" type="text" value="" placeholder="Подпись" name="title"
-                minlength="2" maxlength="200" required>
+              <input class="popup__input popup__input_type_subtitle" type="text" value="" placeholder="Подпись"
+                name="about" minlength="2" maxlength="200" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
             </label>
           </div>
@@ -79,12 +87,12 @@
         <form action="#" class="popup__form popup__form_place" name="popup__form">
           <div class="popup__field">
             <label class="popup__field-text">
-              <input id="place-name-input" type="text" class="popup__input popup-card-name" value="" name = "cardName"
+              <input id="place-name-input" type="text" class="popup__input popup-card-name" value="" name="name"
                 placeholder="Название" minlength="2" maxlength="30" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
             </label>
             <label class="popup__field-text">
-              <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value="" name = "cardLink"
+              <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value="" name="link"
                 placeholder="Ссылка на картинку" required>
               <span class="popup__form-input-error">Вы пропустили это поле</span>
             </label>
@@ -103,6 +111,36 @@
         <h3 class="popup__card-subtitle"></h3>
       </div>
     </div>
+
+    <!-- Попап подтверждения удаления карточки -->
+    <div class="popup popup_type_confirmation">
+      <div class="popup__container_confirmation">
+        <h3 class="popup__title popup__title_confirmation">Вы уверены?</h3>
+        <button class="popup__submit popup__submit_confirmation" type='submit'>Да</button>
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+      </div>
+    </div>
+
+    <!-- Попап изменения аватара -->
+    <div class="popup popup_type_avatar">
+      <div class="popup__container popup__container_avatar">
+        <h3 class="popup__title">Обновить аватар</h3>
+
+        <form action="#" class="popup__form popup__form_avatar" name="popup__form">
+          <div class="popup__field">
+            <label class="popup__field-text">
+              <input id="place-url-input" type="url" class="popup__input popup-card-secondname" value="" name="avatar"
+                placeholder="Ссылка на аватар" required>
+              <span class="popup__form-input-error">Вы пропустили это поле</span>
+            </label>
+            
+          </div>
+          <button class="popup__submit popup__submit_place popup__submit_inactive" type='submit'>Создать</button>
+        </form>
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+      </div>
+    </div>
+
   </div>
 </body>
 

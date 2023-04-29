@@ -50,7 +50,7 @@ export const submitForm = '.popup__submit'
 export const buttonEditProfile = document.querySelector('.profile__edit-button');
 export const buttonClosePopupList = document.querySelectorAll('.popup__close-button');
 export const buttonAddPopup = document.querySelector('.profile__button');
-export const buttonEditAvatar = document.querySelector('.profile__avatar_edit')
+export const buttonEditAvatar = document.querySelector('.profile__avatar-edit')
 
 // Для карточек
 export const cardSubtitle = document.querySelector('.popup__card-subtitle');

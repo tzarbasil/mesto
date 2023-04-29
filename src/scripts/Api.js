@@ -55,6 +55,27 @@ export class Api {
       }),
     }).then(this.__checkResponse);
   }
+
+  deleteCard(cardId) {
+    return fetch(`${this.url}/cards/${cardId._id}`, {
+      method: "DELETE",
+      headers: this.headers,
+    }).then(this.__checkResponse);
+  }
+
+  getLike(cardId) {
+    return fetch(`${this.url}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this.headers,
+    }).then(this.__checkResponse);
+  }
+
+  deleteLike(cardId) {
+    return fetch(`${this.url}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this.headers,
+    }).then(this.__checkResponse);
+  }
 }
 
 export const api = new Api({

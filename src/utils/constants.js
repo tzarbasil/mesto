@@ -71,4 +71,4 @@ export const profileSubitle = document.querySelector('.profile__subtitle');
 export const popupEditForm = document.querySelector('.popup__form_edit');
 export const popupPlaceForm = document.querySelector('.popup__form_place');
 export const popupAvatarForm = document.querySelector('.popup__form_avatar')
-export const PopupDelete = document.querySelector('.popup_type_confirmation')
+

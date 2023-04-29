@@ -18,7 +18,7 @@ class FormValidator {
 
     this._inputsAll = Array.from(this._formElement.querySelectorAll(this._inputSelector));
   }
-  //  Проверять лейбл
+
   _settingInputs(input) {
     this._errorElement = input.closest(this._labelSelector).querySelector(this._inputErrorClass);
     if (input.validity.valid) {

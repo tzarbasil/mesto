@@ -1,12 +1,12 @@
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import PopupConfirm from "../scripts/PopupConfirm.js";
-import UserInfo from "../scripts/UserInfo";
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
-import Section from "../scripts/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupConfirm from "../components/PopupConfirm.js";
+import UserInfo from "../components/UserInfo";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
 import './index.css';
-import { api } from "../scripts/Api.js";
+import { api } from "../components/Api.js";
 
 
 import {
@@ -88,6 +88,9 @@ const submitProfileEdit = (inputValues) => {
       userInfo.setUserInfo(data);
       openProfilePopup.close()
     })
+    .finally(() => {
+      openProfilePopup.addSavingText(false);
+    })
     .catch(console.log);
 };
 
@@ -97,6 +100,9 @@ const submitAvatarEdit = (input) => {
     .then((data) => {
       userInfo.setUserInfo(data);
       openAvatarPopup.close()
+    })
+    .finally(() => {
+      openAvatarPopup.addSavingText(false);
     })
     .catch(console.log);
 };
@@ -108,18 +114,25 @@ const sendCards = (input) => {
       cardList.addItem(createCard(res), true);
       openPlacePopup.close()
     })
+    .finally(() => {
+      openPlacePopup.addSavingText(false);
+    })
     .catch(console.log);
 };
 
 const handlePlaceSubmitDelete = () => {
-  confirmPopup.addSavingText(true, "Coхранение...");
+  confirmPopup.addSavingText(true, "Удаление...");
   api.deleteCard(confirmPopup.cardId)
     .then(() => {
       confirmPopup.close();
-      confirmPopup.card.remove();
+      confirmPopup.removeCard();
+    })
+    .finally(() => {
+      confirmPopup.addSavingText(false);
     })
     .catch(console.log);
 };
+
 
 const editFormValidation = new FormValidator(options, popupEditForm);
 const avatarFormValidation = new FormValidator(options, popupAvatarForm);

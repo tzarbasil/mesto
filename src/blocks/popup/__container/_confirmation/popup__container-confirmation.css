@@ -1,4 +1,4 @@
-.popup__container_confirmation {
+.popup__container-confirmation {
     display: flex;
     flex-direction: column;
     width: 356px;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .popup__container_confirmation {
+    .popup__container-confirmation {
         width: 282px;
     }
 }

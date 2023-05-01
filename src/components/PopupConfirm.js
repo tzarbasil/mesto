@@ -15,10 +15,6 @@ export default class PopupConfirm extends Popup {
     this.card = card;
   }
 
-  removeCard() {
-    this.card.remove()
-  }
-
   close() {
     super.close();
   }

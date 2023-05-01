@@ -26,12 +26,13 @@ const createCard = (data) => {
     () => {
       newPopupWithImage.open(data);
     },
-    () => {
+    function handleTrashClick() {
       confirmPopup.open(data, card._cardContainer);
     },
     userInfo.userId,
     getLike,
-    deleteLike
+    deleteLike,
+
   );
   return card.createElement();
 };
@@ -122,11 +123,10 @@ const sendCards = (input) => {
 
 const handlePlaceSubmitDelete = () => {
   confirmPopup.addSavingText(true, "Удаление...");
-  api.deleteCard(confirmPopup.cardId)
+ return api.deleteCard(confirmPopup.cardId)
     .then(() => {
       confirmPopup.close();
       confirmPopup.removeCard();
-      _test()
     })
     .finally(() => {
       confirmPopup.addSavingText(false);

@@ -26,14 +26,24 @@ const createCard = (data) => {
     () => {
       newPopupWithImage.open(data);
     },
-    function handleTrashClick() {
+    function handleDeleteClick() {
       confirmPopup.open(data, card._cardContainer);
+      confirmPopup.addSavingText(true, "Удаление...");
+     return api.deleteCard(confirmPopup.cardId)
+         .then(() => {
+           card.removeCard()
+           confirmPopup.close();
+         })
+         .catch(console.log)
+         .finally(() => {
+           confirmPopup.addSavingText(false);
+         })
     },
     userInfo.userId,
     getLike,
     deleteLike,
-
   );
+
   return card.createElement();
 };
 
@@ -89,10 +99,10 @@ const submitProfileEdit = (inputValues) => {
       userInfo.setUserInfo(data);
       openProfilePopup.close()
     })
+    .catch(console.log)
     .finally(() => {
       openProfilePopup.addSavingText(false);
     })
-    .catch(console.log);
 };
 
 const submitAvatarEdit = (input) => {
@@ -102,10 +112,10 @@ const submitAvatarEdit = (input) => {
       userInfo.setUserInfo(data);
       openAvatarPopup.close()
     })
+    .catch(console.log)
     .finally(() => {
       openAvatarPopup.addSavingText(false);
     })
-    .catch(console.log);
 };
 
 const sendCards = (input) => {
@@ -115,37 +125,37 @@ const sendCards = (input) => {
       cardList.addItem(createCard(res), true);
       openPlacePopup.close()
     })
+    .catch(console.log)
     .finally(() => {
       openPlacePopup.addSavingText(false);
     })
-    .catch(console.log);
 };
 
-const handlePlaceSubmitDelete = () => {
-  confirmPopup.addSavingText(true, "Удаление...");
- return api.deleteCard(confirmPopup.cardId)
-    .then(() => {
-      confirmPopup.close();
-      confirmPopup.removeCard();
-    })
-    .finally(() => {
-      confirmPopup.addSavingText(false);
-    })
-    .catch(console.log);
-};
+// const handlePlaceSubmitDelete = () => {
+//   confirmPopup.addSavingText(true, "Удаление...");
+//  return api.deleteCard(confirmPopup.cardId)
+//     .then(() => {
+//       confirmPopup.close();
+//       card.removeCard()
+//     })
+//     .catch(console.log)
+//     .finally(() => {
+//       confirmPopup.addSavingText(false);
+//     })
+// };
 
 
 const editFormValidation = new FormValidator(options, popupEditForm);
 const avatarFormValidation = new FormValidator(options, popupAvatarForm);
 const placeFormValidation = new FormValidator(options, popupPlaceForm);
 
-const confirmPopup = new PopupConfirm(".popup_type_confirmation", handlePlaceSubmitDelete)
+const confirmPopup = new PopupConfirm(".popup_type_confirmation")
 const openPlacePopup = new PopupWithForm(popupPlace, sendCards)
 const openAvatarPopup = new PopupWithForm(popupAvatar, submitAvatarEdit)
 const openProfilePopup = new PopupWithForm(popupProfile, submitProfileEdit)
 const newPopupWithImage = new PopupWithImage(cardImagePopup)
 
-confirmPopup.setEventListeners()
+// confirmPopup.setEventListeners()
 editFormValidation.enableValidation();
 avatarFormValidation.enableValidation();
 placeFormValidation.enableValidation();
@@ -153,6 +163,3 @@ openAvatarPopup.setEventListeners()
 openProfilePopup.setEventListeners()
 openPlacePopup.setEventListeners()
 newPopupWithImage.setEventListeners()
-
-
-

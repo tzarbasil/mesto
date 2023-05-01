@@ -7,6 +7,7 @@ export default class PopupConfirm extends Popup {
     this._confirmSubmit = this._popup.querySelector(".popup__submit_confirmation");
     this.confirmSubmit = this._confirmSubmit.textContent;
     this._card = card
+    console.log(this._submitForm)
   }
 
   open(cardId, card) {

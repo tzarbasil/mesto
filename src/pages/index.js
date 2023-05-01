@@ -26,23 +26,33 @@ const createCard = (data) => {
     () => {
       newPopupWithImage.open(data);
     },
-    function handleDeleteClick() {
-      const deleteCardSubmit = () => {
-     return api.deleteCard(confirmPopup.cardId)
-         .then(() => {
+   function handleDeleteClick () {
+      const deleteCardTest = () => {
+   return api.deleteCard(confirmPopup.cardId)
+        .then(() => {
            card.removeCard()
            confirmPopup.close();
          })
-         .catch(console.log)
-         .finally(() => {
-           confirmPopup.addSavingText(false);
-         })
-        }
-        confirmPopup.open(data, card._cardContainer)
-        confirmPopup.addSavingText(true, "Удаление...");
-        confirmPopup.submitForm(deleteCardSubmit)
+           .catch(console.log)
+        //  .finally(() => {
+        //    confirmPopup.addSavingText(false);
+        //  })
+      }
+      confirmPopup.open(data, card._cardContainer);
+      // confirmPopup.addSavingText(true, "Удаление...");
     },
-
+      // confirmPopup.open(data, card._cardContainer);
+      // confirmPopup.addSavingText(true, "Удаление...");
+    //  return api.deleteCard(confirmPopup.cardId)
+    //      .then(() => {
+    //        card.removeCard()
+    //        confirmPopup.close();
+    //      })
+    //      .catch(console.log)
+    //      .finally(() => {
+    //        confirmPopup.addSavingText(false);
+    //      })
+    // },
     userInfo.userId,
     getLike,
     deleteLike,

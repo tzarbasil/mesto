@@ -27,8 +27,7 @@ const createCard = (data) => {
       newPopupWithImage.open(data);
     },
     function handleDeleteClick() {
-      confirmPopup.open(data, card._cardContainer);
-      confirmPopup.addSavingText(true, "Удаление...");
+      const deleteCardSubmit = () => {
      return api.deleteCard(confirmPopup.cardId)
          .then(() => {
            card.removeCard()
@@ -38,7 +37,12 @@ const createCard = (data) => {
          .finally(() => {
            confirmPopup.addSavingText(false);
          })
+        }
+        confirmPopup.open(data, card._cardContainer)
+        confirmPopup.addSavingText(true, "Удаление...");
+        confirmPopup.submitForm(deleteCardSubmit)
     },
+
     userInfo.userId,
     getLike,
     deleteLike,

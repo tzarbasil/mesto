@@ -43,6 +43,10 @@ export default class Card {
     });
   }
 
+  _test() {
+    console.log('тест')
+  }
+
   getId() {
     return this._cardId;
   }

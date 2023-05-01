@@ -126,6 +126,7 @@ const handlePlaceSubmitDelete = () => {
     .then(() => {
       confirmPopup.close();
       confirmPopup.removeCard();
+      _test()
     })
     .finally(() => {
       confirmPopup.addSavingText(false);

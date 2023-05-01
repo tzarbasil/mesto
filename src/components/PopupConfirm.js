@@ -1,13 +1,15 @@
 import Popup from "./Popup.js"
 
 export default class PopupConfirm extends Popup {
-  constructor(popupSelector, submitForm, card) {
+  constructor(popupSelector, card) {
     super(popupSelector);
-    this._submitForm = submitForm;
     this._confirmSubmit = this._popup.querySelector(".popup__submit_confirmation");
-    this.confirmSubmit = this._confirmSubmit.textContent;
+    this.confirmSubmitText = this._confirmSubmit.textContent;
     this._card = card
-    console.log(this._submitForm)
+  }
+
+  setCallbackConfirm(callbackConfirm) {
+    this._callbackConfirm = callbackConfirm;
   }
 
   open(cardId, card) {
@@ -24,11 +26,14 @@ export default class PopupConfirm extends Popup {
     if (saving) {
       this._confirmSubmit.textContent = text;
     } else {
-      this._confirmSubmit.textContent = this.confirmSubmit;
+      this._confirmSubmit.textContent = this.confirmSubmitText;
     }
   }
   setEventListeners() {
-    this._confirmSubmit.addEventListener("click", this._submitForm);
-}
+    super.setEventListeners()
+    this._confirmSubmit.addEventListener('click', () => {
+      this._callbackConfirm()
+    });
+  }
 
 }

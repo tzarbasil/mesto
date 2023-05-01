@@ -13,7 +13,6 @@ export default class Card {
     this._handleDeleteClick = handleDeleteClick;
 
     this._owner = data.owner;
-    // this._deleteCard = deleteCard;
     this._userId = userId;
     this._cardId = data._id;
     this._setEventListeners();
@@ -34,7 +33,7 @@ export default class Card {
   _setEventListeners() {
     this._deleteButton.addEventListener('click', () => {
       this._handleDeleteClick();
-        });
+    });
 
     this._likeButton.addEventListener("click", () => {
       this.setLikeSettings(this);
@@ -48,7 +47,7 @@ export default class Card {
     return this._cardId;
   }
 
-  removeCard(){
+  removeCard() {
     this._cardContainer.remove();
   }
 

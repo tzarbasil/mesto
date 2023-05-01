@@ -26,33 +26,23 @@ const createCard = (data) => {
     () => {
       newPopupWithImage.open(data);
     },
-   function handleDeleteClick () {
-      const deleteCardTest = () => {
-   return api.deleteCard(confirmPopup.cardId)
-        .then(() => {
-           card.removeCard()
-           confirmPopup.close();
-         })
-           .catch(console.log)
-        //  .finally(() => {
-        //    confirmPopup.addSavingText(false);
-        //  })
+    function handleDeleteClick() {
+      const deleteCardSubmit = () => {
+        confirmPopup.addSavingText(true, "Удаление...");
+        return api.deleteCard(confirmPopup.cardId)
+          .then(() => {
+            card.removeCard()
+            confirmPopup.close();
+          })
+          .catch(console.log)
+          .finally(() => {
+            confirmPopup.addSavingText(false);
+          })
       }
       confirmPopup.open(data, card._cardContainer);
-      // confirmPopup.addSavingText(true, "Удаление...");
+      confirmPopup.setCallbackConfirm(deleteCardSubmit)
     },
-      // confirmPopup.open(data, card._cardContainer);
-      // confirmPopup.addSavingText(true, "Удаление...");
-    //  return api.deleteCard(confirmPopup.cardId)
-    //      .then(() => {
-    //        card.removeCard()
-    //        confirmPopup.close();
-    //      })
-    //      .catch(console.log)
-    //      .finally(() => {
-    //        confirmPopup.addSavingText(false);
-    //      })
-    // },
+
     userInfo.userId,
     getLike,
     deleteLike,
@@ -145,20 +135,6 @@ const sendCards = (input) => {
     })
 };
 
-// const handlePlaceSubmitDelete = () => {
-//   confirmPopup.addSavingText(true, "Удаление...");
-//  return api.deleteCard(confirmPopup.cardId)
-//     .then(() => {
-//       confirmPopup.close();
-//       card.removeCard()
-//     })
-//     .catch(console.log)
-//     .finally(() => {
-//       confirmPopup.addSavingText(false);
-//     })
-// };
-
-
 const editFormValidation = new FormValidator(options, popupEditForm);
 const avatarFormValidation = new FormValidator(options, popupAvatarForm);
 const placeFormValidation = new FormValidator(options, popupPlaceForm);
@@ -169,7 +145,7 @@ const openAvatarPopup = new PopupWithForm(popupAvatar, submitAvatarEdit)
 const openProfilePopup = new PopupWithForm(popupProfile, submitProfileEdit)
 const newPopupWithImage = new PopupWithImage(cardImagePopup)
 
-// confirmPopup.setEventListeners()
+confirmPopup.setEventListeners()
 editFormValidation.enableValidation();
 avatarFormValidation.enableValidation();
 placeFormValidation.enableValidation();
